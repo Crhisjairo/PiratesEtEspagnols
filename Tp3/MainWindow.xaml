@@ -18,7 +18,9 @@
         </Grid.RowDefinitions>
 
         <Canvas>
-            <Ellipse></Ellipse>
+            <Ellipse Width="50"
+                     Height="50"
+                     Fill="Blue"></Ellipse>
         </Canvas>
     </Grid>
 
