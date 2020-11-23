@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tp3", "Tp3.csproj", "{0D7B52FB-2EFB-4A21-A032-2A7745842F99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiratesEtEspagnols", "..\PiratesEtEspagnols\PiratesEtEspagnols.csproj", "{2A8A120D-A82D-421B-96AA-B1D3AB6D6705}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0D7B52FB-2EFB-4A21-A032-2A7745842F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D7B52FB-2EFB-4A21-A032-2A7745842F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D7B52FB-2EFB-4A21-A032-2A7745842F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8A120D-A82D-421B-96AA-B1D3AB6D6705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8A120D-A82D-421B-96AA-B1D3AB6D6705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8A120D-A82D-421B-96AA-B1D3AB6D6705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8A120D-A82D-421B-96AA-B1D3AB6D6705}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
