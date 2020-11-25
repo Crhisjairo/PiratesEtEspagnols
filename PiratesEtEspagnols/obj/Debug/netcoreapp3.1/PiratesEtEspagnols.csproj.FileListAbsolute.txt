@@ -1,0 +1,13 @@
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\obj\Debug\netcoreapp3.1\PiratesEtEspagnols.csprojAssemblyReference.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\obj\Debug\netcoreapp3.1\PiratesEtEspagnols.AssemblyInfoInputs.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\obj\Debug\netcoreapp3.1\PiratesEtEspagnols.AssemblyInfo.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\obj\Debug\netcoreapp3.1\PiratesEtEspagnols.csproj.CoreCompileInputs.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\bin\Debug\netcoreapp3.1\PiratesEtEspagnols.exe
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\bin\Debug\netcoreapp3.1\PiratesEtEspagnols.deps.json
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\bin\Debug\netcoreapp3.1\PiratesEtEspagnols.runtimeconfig.json
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\bin\Debug\netcoreapp3.1\PiratesEtEspagnols.runtimeconfig.dev.json
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\bin\Debug\netcoreapp3.1\PiratesEtEspagnols.dll
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\bin\Debug\netcoreapp3.1\PiratesEtEspagnols.pdb
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\obj\Debug\netcoreapp3.1\PiratesEtEspagnols.dll
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\obj\Debug\netcoreapp3.1\PiratesEtEspagnols.pdb
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols\obj\Debug\netcoreapp3.1\PiratesEtEspagnols.genruntimeconfig.cache

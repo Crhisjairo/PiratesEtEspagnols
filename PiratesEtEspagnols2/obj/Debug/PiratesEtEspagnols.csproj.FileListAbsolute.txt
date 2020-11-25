@@ -1,0 +1,6 @@
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\bin\Debug\PiratesEtEspagnols2.exe.config
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\bin\Debug\PiratesEtEspagnols2.exe
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\bin\Debug\PiratesEtEspagnols2.pdb
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols.csproj.CoreCompileInputs.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols2.exe
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols2.pdb

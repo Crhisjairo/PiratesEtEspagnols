@@ -4,13 +4,13 @@ using System.Text;
 
 namespace PiratesEtEspagnols
 {
-    class GalionEspagnol : ModeleNavire
+    public class ModeleEscorte : Navire
     {
-        public int CantiteOr { get; private set; }
 
-        public GalionEspagnol()
+
+        public ModeleEscorte()
         {
-            VitesseDeplacement = 3;
+            VitesseDeplacement = 2;
             CannonsDroit = 16;
             CannonsGauche = 16;
             MembresInitial = 100;
@@ -19,8 +19,9 @@ namespace PiratesEtEspagnols
             cannon.TempsRecharge = 0; //TODO
             cannon.ChamDeTire = 0; //TODO
             EstEnemiePirate = true;
-
-            CantiteOr = 0; //TODO aussi
         }
+
+
+
     }
 }

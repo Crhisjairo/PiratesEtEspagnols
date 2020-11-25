@@ -34,6 +34,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -59,7 +63,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GalionEspagnol.xaml">
+    <Page Include="VueGalion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,28 +78,28 @@
     <Compile Include="Balle.xaml.cs">
       <DependentUpon>Balle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GalionEspagnol.xaml.cs">
-      <DependentUpon>GalionEspagnol.xaml</DependentUpon>
+    <Compile Include="VueGalion.xaml.cs">
+      <DependentUpon>VueGalion.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="NavireEscorte.xaml">
+    <Page Include="VueEscorte.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NavirePirate.xaml">
+    <Page Include="VuePirate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NavireEscorte.xaml.cs">
-      <DependentUpon>NavireEscorte.xaml</DependentUpon>
+    <Compile Include="VueEscorte.xaml.cs">
+      <DependentUpon>VueEscorte.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NavirePirate.xaml.cs">
-      <DependentUpon>NavirePirate.xaml</DependentUpon>
+    <Compile Include="VuePirate.xaml.cs">
+      <DependentUpon>VuePirate.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -121,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PiratesEtEspagnols2\PiratesEtEspagnols.csproj">
+      <Project>{868b2109-7e3b-4dd1-aae8-bed31fd16cae}</Project>
+      <Name>PiratesEtEspagnols</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

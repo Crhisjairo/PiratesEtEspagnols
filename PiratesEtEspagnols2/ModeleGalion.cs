@@ -4,11 +4,11 @@ using System.Text;
 
 namespace PiratesEtEspagnols
 {
-    class GalionEspagnol : ModeleNavire
+    public class ModeleGalion : Navire
     {
         public int CantiteOr { get; private set; }
 
-        public GalionEspagnol()
+        public ModeleGalion()
         {
             VitesseDeplacement = 3;
             CannonsDroit = 16;
