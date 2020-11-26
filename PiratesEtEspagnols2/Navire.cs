@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PiratesEtEspagnols
 {
-    class Navire
+    public class Navire
     {
         /// <summary>
         /// Vitesse de deplacement du navire.

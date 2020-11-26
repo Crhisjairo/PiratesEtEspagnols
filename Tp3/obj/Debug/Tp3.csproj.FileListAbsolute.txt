@@ -1,23 +1,27 @@
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.exe.config
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.exe
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.pdb
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csprojAssemblyReference.cache
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Balle.g.cs
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\GalionEspagnol.g.cs
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\MainWindow.g.cs
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\NavireEscorte.g.cs
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\NavirePirate.g.cs
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\App.g.cs
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3_MarkupCompile.cache
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3_MarkupCompile.lref
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Balle.baml
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\GalionEspagnol.baml
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\MainWindow.baml
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\NavireEscorte.baml
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\NavirePirate.baml
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.g.resources
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.Properties.Resources.resources
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.GenerateResource.cache
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.CoreCompileInputs.cache
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.exe
-D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.pdb
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.exe.config
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.exe
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.pdb
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csprojAssemblyReference.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Balle.g.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\MainWindow.g.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\VuePirate.g.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\App.g.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3_MarkupCompile.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3_MarkupCompile.lref
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Balle.baml
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\MainWindow.baml
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\VuePirate.baml
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.g.resources
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.Properties.Resources.resources
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.GenerateResource.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.CoreCompileInputs.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.exe
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.pdb
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\VueGalion.g.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\VueEscorte.g.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\VueGalion.baml
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\VueEscorte.baml
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\PiratesEtEspagnols2.exe
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\PiratesEtEspagnols2.pdb
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\PiratesEtEspagnols2.exe.config
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.CopyComplete

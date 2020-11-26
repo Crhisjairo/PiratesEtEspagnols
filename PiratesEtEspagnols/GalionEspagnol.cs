@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PiratesEtEspagnols
 {
-    class GalionEspagnol : Navire
+    class GalionEspagnol : ModeleNavire
     {
         public int CantiteOr { get; private set; }
 

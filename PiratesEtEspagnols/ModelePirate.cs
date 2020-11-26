@@ -4,19 +4,19 @@ using System.Text;
 
 namespace PiratesEtEspagnols
 {
-    class NavirePirate : Navire
+    class ModelePirate : ModeleNavire
     {
 
-        public NavirePirate()
+        public ModelePirate()
         {
             VitesseDeplacement = 3;
-            CanonsDroit = 16;
-            CanonsGauche = 16;
+            CannonsDroit = 16;
+            CannonsGauche = 16;
             MembresInitial = 100;
             MembresRestant = MembresInitial;
-            canon.Puissance = 0; //TODO
-            canon.TempsRecharge = 0; //TODO
-            canon.ChamDeTire = 0; //TODO
+            cannon.Puissance = 0; //TODO
+            cannon.TempsRecharge = 0; //TODO
+            cannon.ChamDeTire = 0; //TODO
             EstEnemiePirate = false;
         }
 
