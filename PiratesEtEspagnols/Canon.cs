@@ -1,6 +1,6 @@
 ﻿namespace PiratesEtEspagnols
 {
-    class Cannon
+    class Canon
     {
         public double Puissance {get; set; }
         public double TempsRecharge {get; set; }
