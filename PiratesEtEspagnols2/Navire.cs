@@ -34,7 +34,7 @@ namespace PiratesEtEspagnols
         /// </summary>
         protected bool EstHorsCombat { get; set; } = false;
        
-        protected Canon canon = new Canon();
+        public Canon canon = new Canon();
         protected bool EstEnemiePirate { get; set; }
         protected double Efficacite { get; set; }
 
