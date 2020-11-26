@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buttons.cs" />
-    <Compile Include="Cannon.cs" />
+    <Compile Include="Canon.cs" />
     <Compile Include="ModeleGalion.cs" />
     <Compile Include="Jeu.cs" />
     <Compile Include="ModeleEscorte.cs" />
