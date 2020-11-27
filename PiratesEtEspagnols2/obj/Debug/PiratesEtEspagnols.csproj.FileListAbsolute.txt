@@ -4,4 +4,14 @@ C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Pirates
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols.csproj.CoreCompileInputs.cache
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols2.exe
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols2.pdb
+<<<<<<< Updated upstream
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols.csprojAssemblyReference.cache
+=======
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols.csprojAssemblyReference.cache
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols.csproj.CoreCompileInputs.cache
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols2.exe
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\PiratesEtEspagnols2\obj\Debug\PiratesEtEspagnols2.pdb
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\PiratesEtEspagnols2\bin\Debug\PiratesEtEspagnols2.exe.config
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\PiratesEtEspagnols2\bin\Debug\PiratesEtEspagnols2.exe
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\PiratesEtEspagnols2\bin\Debug\PiratesEtEspagnols2.pdb
+>>>>>>> Stashed changes

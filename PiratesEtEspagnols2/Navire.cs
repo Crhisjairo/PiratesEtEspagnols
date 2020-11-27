@@ -5,6 +5,7 @@ namespace PiratesEtEspagnols
 {
     public class Navire
     {
+        public static List<Navire> ListeNavires = new List<Navire>();
         /// <summary>
         /// Vitesse de deplacement du navire.
         /// </summary>
@@ -37,51 +38,146 @@ namespace PiratesEtEspagnols
         public Canon canon = new Canon();
         protected bool EstEnemiePirate { get; set; }
         protected double Efficacite { get; set; }
-
         protected Dictionary<string, double> PositionNavire { get; set; } = new Dictionary<string,double>();
-        
-        //TODO
-        private double TailleNavire = 10.0;
-        private double LongueurNavire = 2.0;
-        double positionX = 0.0;
-        double positionY = 0.0;
+        private double TailleNavire { get; set; }
+        private double LongueurNavire { get; set; }
 
-        public Navire()
+
+        public Navire(Canvas canvas)
         {
-            PlacerNavireCanvas();
+            PlacerNavireCanvas(canvas);
+            TailleNavire = ActualHeight;
+            LongueurNavire = ActualWidth;
+
+            ListeNavires.Add(this);
         }
 
-        public virtual void PlacerNavireCanvas() //changer pour le NavirePirate - public override void PlacerNavireCanvas()
+
+        public void PlacerNavireCanvas(Canvas canvas) 
         {
-            PositionNavire.Add("Arrier", positionX);
-            PositionNavire.TryGetValue("Arrier", out positionX);
-            PositionNavire.Add("Front", positionX + TailleNavire);
+            double positionX = Canvas.GetLeft(this);
+            double positionY = Canvas.GetTop(this);
+           
+            PositionNavire.Add("Haut", positionX);
+            PositionNavire.Add("Bas", positionX + TailleNavire); //où est le canon
             PositionNavire.Add("Gauche", positionY);
-            PositionNavire.TryGetValue("Gauche", out positionY);
             PositionNavire.Add("Droite", positionY + LongueurNavire);
-        }
+
+        } 
 
 
-        //TODO
-        public void Deplacer(Buttons button)
+        public virtual void Deplacer(Buttons button, Canvas canvas) //? pirate
         {
+            double nouvellePositionX = PositionNavire["Gauche"];
+            double nouvellePositionY = PositionNavire["Haut"];
+
             switch (button)
             {
                 case Buttons.Bas:
-                    PositionNavire["Arrier"] = 40.2;
+                    nouvellePositionY += VitesseDeplacement;
+                    if (!InterdireMouvement(canvas, nouvellePositionX, nouvellePositionY))
+                    {
+                        PositionNavire["Haut"] += VitesseDeplacement;
+                        PositionNavire["Bas"] += VitesseDeplacement;
+                    }
                     break;
+                case Buttons.Haut:
+                    nouvellePositionY -= VitesseDeplacement;
+                    if (!InterdireMouvement(canvas, nouvellePositionX, nouvellePositionY))
+                    {
+                        PositionNavire["Haut"] -= VitesseDeplacement;
+                        PositionNavire["Bas"] -= VitesseDeplacement;
+                    }
+                    break;
+                case Buttons.Droit:
+                    nouvellePositionX += VitesseDeplacement;
+                    if (!InterdireMouvement(canvas, nouvellePositionX, nouvellePositionY))
+                    {
+                        PositionNavire["Droite"] += VitesseDeplacement;
+                        PositionNavire["Gauche"] += VitesseDeplacement;
+                    }
+                    break;
+                case Buttons.Gauche:
+                    nouvellePositionX -= VitesseDeplacement;
+                    if (!InterdireMouvement(canvas, nouvellePositionX, nouvellePositionY))
+                    {
+                        PositionNavire["Droite"] -= VitesseDeplacement;
+                        PositionNavire["Gauche"] -= VitesseDeplacement;
+                    }
+                    break;
+                default:
+                    break;
+            }
 
-            }    
+            Canvas.SetLeft(this, PositionNavire["Droite"]);
+            Canvas.SetTop(this, PositionNavire["Haut"]);
+
+        } 
+
+        public bool InterdireMouvement(Canvas canvas, double positionX, double positionY)
+        {
+            bool mouvementInterdit = false;
+
+            if (positionX < 0)
+            {
+                mouvementInterdit = true;
+            }
+            else if (positionX + LongueurNavire > canvas.ActualWidth)
+            {
+                mouvementInterdit = true;
+            }
+
+            if (positionY < 0)
+            {
+                mouvementInterdit = true;
+            }
+            else if (positionY + TailleNavire > canvas.ActualHeight)
+            {
+                mouvementInterdit = true;
+            }
+
+            if (verifierColisionAvecAutreNavire(positionX, positionY))
+            {
+                mouvementInterdit = true;
+            }
+
+            return mouvementInterdit;
+        }
+
+
+        //TODO
+        public bool verifierColisionAvecAutreNavire(double positionX, double positionY)
+        {
+            bool colide = false;
+
+            foreach (Navire autreNavire in ListeNavires)
+            {
+                if (!autreNavire.Equals(this))
+                {
+                    if (positionY > autreNavire.PositionNavire["Bas"])
+                    {
+                        if(positionY <0)
+                    } 
+                    else if (positionY + TailleNavire> autreNavire.PositionNavire["Haut"])
+                    {
+
+                    }
+                }
+
+               
+            }
+
+            return colide;
         }
 
         // TODO
         public void Tirer()
         {
             VerifierHorsCombat();
-            
+
             if (!EstHorsCombat)
             {
-                
+
                 //CalculerEfficaciteAttaque();
             }
         }
@@ -91,7 +187,7 @@ namespace PiratesEtEspagnols
 
         }
 
-        
+
         /// <summary>
         /// Calcule quelle est la puissance de l'attaque d'accord avec la quantité de canons, la puissance des canons et la quantité d'équipage vive.
         /// </summary>
@@ -99,23 +195,23 @@ namespace PiratesEtEspagnols
         /// <returns>La puissance de l'attaque du navire verns son enimie</returns>
         private double CalculerEfficaciteAttaque (CoteCanon cote)
         {
-            double puissanceAttaque = 0;
-            switch (cote)
-            {
-                case CoteCanon.Arrier:
-                    puissanceAttaque= this.CanonsArrier * this.canon.Puissance;
-                    break;
-                case CoteCanon.Droite:
-                    puissanceAttaque= this.CanonsDroit * this.canon.Puissance;
-                    break;
-                case CoteCanon.Gauche:
-                    puissanceAttaque = this.CanonsGauche * this.canon.Puissance;
-                    break;
-            }
+        double puissanceAttaque = 0;
+        switch (cote)
+        {
+            case CoteCanon.Arrier:
+                puissanceAttaque= this.CanonsArrier * this.canon.Puissance;
+                break;
+            case CoteCanon.Droite:
+                puissanceAttaque= this.CanonsDroit * this.canon.Puissance;
+                break;
+            case CoteCanon.Gauche:
+                puissanceAttaque = this.CanonsGauche * this.canon.Puissance;
+                break;
+        }
 
-            puissanceAttaque *= VerifierEfficacite();
+        puissanceAttaque *= VerifierEfficacite();
 
-            return puissanceAttaque;
+        return puissanceAttaque;
         }
 
         /// <summary>
@@ -124,8 +220,8 @@ namespace PiratesEtEspagnols
         /// <returns>L'efficacité d'opération du navire. Elle doit être entre 0 et 1</returns>
         private double VerifierEfficacite()
         {
-            this.Efficacite = (double)MembresRestant/(double)MembresInitial;
-            return Efficacite;
+        this.Efficacite = (double)MembresRestant/(double)MembresInitial;
+        return Efficacite;
         }
 
         /// <summary>

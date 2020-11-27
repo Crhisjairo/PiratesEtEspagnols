@@ -25,3 +25,30 @@ C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\PiratesEtEspagnols2.pdb
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\PiratesEtEspagnols2.exe.config
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.CopyComplete
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.exe.config
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.exe
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.pdb
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\PiratesEtEspagnols2.exe
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\PiratesEtEspagnols2.pdb
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\bin\Debug\PiratesEtEspagnols2.exe.config
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csprojAssemblyReference.cache
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Balle.g.cs
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\VueGalion.g.cs
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\MainWindow.g.cs
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\VueEscorte.g.cs
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\VuePirate.g.cs
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\App.g.cs
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3_MarkupCompile.cache
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3_MarkupCompile.lref
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Balle.baml
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\VueGalion.baml
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\MainWindow.baml
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\VueEscorte.baml
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\VuePirate.baml
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.g.resources
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.Properties.Resources.resources
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.GenerateResource.cache
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.CoreCompileInputs.cache
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.CopyComplete
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.exe
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.pdb
