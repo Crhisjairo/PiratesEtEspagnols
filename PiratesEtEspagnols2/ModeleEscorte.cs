@@ -6,7 +6,7 @@ namespace PiratesEtEspagnols
 {
     public class ModeleEscorte : Navire
     {
-
+        private TypeEscorte type;
 
         public ModeleEscorte()
         {
@@ -21,7 +21,13 @@ namespace PiratesEtEspagnols
             EstEnemiePirate = true;
         }
 
+        
+    }
 
-
+    public enum TypeEscorte
+    {
+        Epee,
+        Cheval,
+        Croix
     }
 }
