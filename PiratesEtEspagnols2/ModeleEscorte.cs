@@ -8,7 +8,7 @@ namespace PiratesEtEspagnols
     {
         private TypeEscorte type;
 
-        public ModeleEscorte()
+        public ModeleEscorte();
         {
             VitesseDeplacement = 2;
             CanonsDroit = 16;

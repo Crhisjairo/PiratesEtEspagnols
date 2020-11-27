@@ -15,6 +15,8 @@ namespace Tp3
         {
             InitializeComponent();
 
+
+
             SetPersonnagesAuCanvas();
         }
 
@@ -23,5 +25,7 @@ namespace Tp3
             //Canvas.SetLeft(Pirate, jeu.GetPositionPirateX());
             //Canvas.SetTop(Pirate, jeu.GetPositionPirateY());
         }
+
+
     }
 }

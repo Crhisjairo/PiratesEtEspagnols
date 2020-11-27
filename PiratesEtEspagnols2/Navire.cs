@@ -52,6 +52,7 @@ namespace PiratesEtEspagnols
             ListeNavires.Add(this);
         }
 
+        //public void SetActualHeight;
 
         public void PlacerNavireCanvas(Canvas canvas) 
         {
