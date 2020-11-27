@@ -4,10 +4,10 @@ using System.Text;
 
 namespace PiratesEtEspagnols
 {
-    public class Pirate : Navire
+    public class ModelePirate : Navire
     {
 
-        public Pirate()
+        public ModelePirate()
         {
             VitesseDeplacement = 3;
             CanonsDroit = 16;

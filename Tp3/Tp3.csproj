@@ -132,5 +132,68 @@
       <Name>PiratesEtEspagnols</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\Effects\Explosion1.png" />
+    <Resource Include="images\Effects\Explosion2.png" />
+    <Resource Include="images\Effects\Explosion3.png" />
+    <Resource Include="images\Effects\Feu1.png" />
+    <Resource Include="images\Effects\Feu2.png" />
+    <Resource Include="images\Icones\Membres\MembreEspagnol1.png" />
+    <Resource Include="images\Icones\Membres\MembreEspagnol2.png" />
+    <Resource Include="images\Icones\Membres\MembreEspagnol3.png" />
+    <Resource Include="images\Icones\Membres\MembrePirate1.png" />
+    <Resource Include="images\Icones\Membres\MembrePirate2.png" />
+    <Resource Include="images\Icones\Membres\MembrePirate3.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %281%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2810%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2811%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2812%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2813%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2814%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2815%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2816%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2817%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2818%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2819%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %282%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2820%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2821%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2822%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2823%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %2824%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %283%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %284%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %285%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %286%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %287%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %288%29.png" />
+    <Resource Include="images\Icones\Navires\sailLarge %289%29.png" />
+    <Resource Include="images\License.txt" />
+    <Resource Include="images\Navires\Escortes\Escorte1Etat1.png" />
+    <Resource Include="images\Navires\Escortes\Escorte1Etat2.png" />
+    <Resource Include="images\Navires\Escortes\Escorte1Etat3.png" />
+    <Resource Include="images\Navires\Escortes\Escorte1Etat4.png" />
+    <Resource Include="images\Navires\Escortes\Escorte2Etat1.png" />
+    <Resource Include="images\Navires\Escortes\Escorte2Etat2.png" />
+    <Resource Include="images\Navires\Escortes\Escorte2Etat3.png" />
+    <Resource Include="images\Navires\Escortes\Escorte2Etat4.png" />
+    <Resource Include="images\Navires\Escortes\Escorte3Etat1.png" />
+    <Resource Include="images\Navires\Escortes\Escorte3Etat2.png" />
+    <Resource Include="images\Navires\Escortes\Escorte3Etat3.png" />
+    <Resource Include="images\Navires\Escortes\Escorte3Etat4.png" />
+    <Resource Include="images\Navires\Galion\GalionEtat1.png" />
+    <Resource Include="images\Navires\Galion\GalionEtat2.png" />
+    <Resource Include="images\Navires\Galion\GalionEtat3.png" />
+    <Resource Include="images\Navires\Galion\GalionEtat4.png" />
+    <Resource Include="images\Navires\NavireEtat1.png" />
+    <Resource Include="images\Navires\NavireEtat2.png" />
+    <Resource Include="images\Navires\NavireEtat3.png" />
+    <Resource Include="images\Navires\NavireEtat4.png" />
+    <Resource Include="images\Navires\Pirate\PirateEtat1.png" />
+    <Resource Include="images\Navires\Pirate\PirateEtat2.png" />
+    <Resource Include="images\Navires\Pirate\PirateEtat3.png" />
+    <Resource Include="images\Navires\Pirate\PirateEtat4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

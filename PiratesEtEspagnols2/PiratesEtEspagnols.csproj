@@ -46,6 +46,7 @@
     <Compile Include="Buttons.cs" />
     <Compile Include="Canon.cs" />
     <Compile Include="CoteCanon.cs" />
+    <Compile Include="EtatNavire.cs" />
     <Compile Include="ModeleGalion.cs" />
     <Compile Include="Jeu.cs" />
     <Compile Include="ModeleEscorte.cs" />
