@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PiratesEtEspagnols
 {
-    public class Navire
+    public abstract class Navire
     {
         public static List<Navire> ListeNavires = new List<Navire>();
         /// <summary>
@@ -239,6 +239,11 @@ namespace PiratesEtEspagnols
         public void PerdreMembres()
         {
 
+        }
+
+        public void ChangerEtat()
+        {
+            //Change l'état
         }
     }
 }
