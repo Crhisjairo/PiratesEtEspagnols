@@ -5,25 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tp3"
         mc:Ignorable="d"
-        Title="Jeu Adriana et Christian" Height="1200" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        Title="Jeu Adriana et Christian" Height="1050" Width="800" KeyDown="Window_KeyDown">
+    <Canvas x:Name="Surface">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <Canvas>
-            <local:VuePirate x:Name="Pirate" Canvas.Left="388" Canvas.Top="993"></local:VuePirate>
-            <local:VueGalion x:Name="Galion" Canvas.Top="12" Canvas.Left="272" Height="274" Width="218"></local:VueGalion>
-
-            <local:VueEscorte x:Name="UnEscorte" Canvas.Left="133" Canvas.Top="408"/>
-            <local:VueEscorte x:Name="DeuxEscorte" Canvas.Left="573" Canvas.Top="408"/>
-        </Canvas>
-    </Grid>
-
+    </Canvas>
 </Window>

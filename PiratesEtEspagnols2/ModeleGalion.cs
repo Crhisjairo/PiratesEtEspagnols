@@ -10,6 +10,7 @@ namespace PiratesEtEspagnols
 
         public ModeleGalion()
         {
+           /*
             VitesseDeplacement = 3;
             CanonsDroit = 16;
             CanonsGauche = 16;
@@ -21,6 +22,7 @@ namespace PiratesEtEspagnols
             EstEnemiePirate = true;
 
             CantiteOr = 0; //TODO aussi
-        }
+        */
+            }
     }
 }

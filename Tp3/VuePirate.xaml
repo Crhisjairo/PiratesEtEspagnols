@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tp3"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100">
+             d:DesignHeight="100" d:DesignWidth="50">
     <Grid>
-        <Image Source="images/Navires/Pirate/PirateEtat1.png" Name="ImagePirate"></Image>
+        <Image Source="images/Navires/Pirate/PirateEtat1.png" Name="ImagePirate" Height="100"/>
     </Grid>
 </UserControl>
