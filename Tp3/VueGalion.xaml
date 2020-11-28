@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Tp3"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="100">
+             d:DesignHeight="150" d:DesignWidth="90">
     <Grid>
-        <Image Source="images/Navires/Galion/GalionEtat1.png" Name="ImageGalion"></Image>
+        <Image Source="images/Navires/Galion/GalionEtat1.png" Name="ImageGalion" Height="150"/>
     </Grid>
 </UserControl>

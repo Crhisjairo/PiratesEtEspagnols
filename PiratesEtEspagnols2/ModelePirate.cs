@@ -9,7 +9,7 @@ namespace PiratesEtEspagnols
 
         public ModelePirate()
         {
-            VitesseDeplacement = 3;
+            /*VitesseDeplacement = 3;
             CanonsDroit = 16;
             CanonsGauche = 16;
             MembresInitial = 100;
@@ -18,7 +18,7 @@ namespace PiratesEtEspagnols
             canon.TempsRecharge = 0; //TODO
             canon.ChamDeTire = 0; //TODO
             EstEnemiePirate = false;
-        }
+        */}
 
         public void VolerMembres()
         {

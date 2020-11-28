@@ -12,6 +12,10 @@ namespace Tp3
     {
         private static ModeleEscorte _escorte = new ModeleEscorte();
         private TypeEscorte typeEscorte;
+        
+        private const int Acceleration = 4;
+        public double ChangementPositionX { get; set; }
+        public double ChangementPositionY { get; set; }
 
         public VueEscorte()
         {
@@ -26,7 +30,7 @@ namespace Tp3
         /// <param name="etat">État du navire</param>
         public void ChangerEtat(EtatNavire etat)
         {
-            _escorte.ChangerEtat();
+            //_escorte.ChangerEtat();
 
             if (typeEscorte == TypeEscorte.Cheval)
             {
@@ -112,6 +116,81 @@ namespace Tp3
             }
         }
 
+        /// <summary>
+        /// Fait le choix vers quelle direction le navire doit aller.
+        /// </summary>
+        /// <param name="surface">La surface danns laquele le navire est placé</param>
+        public void MouvementerNavire(Canvas surface)
+        {
+            Random random = new Random();
+            int choixDirection = random.Next(45);
+
+            if (choixDirection < 10)
+            {
+                ChangementPositionY += Acceleration;
+            }
+            else if (choixDirection < 20)
+            {
+                ChangementPositionY -= Acceleration;
+            }
+            else if (choixDirection < 30)
+            {
+                ChangementPositionX -= Acceleration;
+            }
+            else if (choixDirection < 40)
+            {
+                ChangementPositionX += Acceleration;
+            }
+            else
+            {
+                ChangementPositionX += 0;
+            }
+
+            ValiderMouvement(surface);
+
+            ReplacerNavire();
+
+        }
+
+        /// <summary>
+        /// Verifie se le navire se mantien dedans le Canvas s'il fait le mouvement.
+        /// </summary>
+        /// <param name="surface">L'espace où le navire peut se mouvementer</param>
+        public void ValiderMouvement(Canvas surface)
+        {
+            double nextY = Canvas.GetTop(this) + ChangementPositionY;
+            double nextX = Canvas.GetLeft(this) + ChangementPositionX;
+
+            if (nextY < 0)
+            {
+                ChangementPositionY = 0;
+            }
+            else if (nextY + ActualHeight > surface.ActualHeight)
+            {
+                ChangementPositionY = 0;
+            }
+
+            if (nextX < 0)
+            {
+                ChangementPositionX = 0;
+            }
+            else if (nextX + ActualWidth > surface.ActualWidth)
+            {
+                ChangementPositionX = 0;
+            }
+
+        }
+
+        /// <summary>
+        /// Sert à placer le navire dans le canvas.
+        /// </summary>
+        public void ReplacerNavire()
+        {
+
+            Canvas.SetTop(this, Canvas.GetTop(this) + ChangementPositionY);
+            Canvas.SetLeft(this, Canvas.GetLeft(this) + ChangementPositionX);
+            
+        }
 
     }
 }
