@@ -15,10 +15,8 @@ namespace Tp3
     public partial class MainWindow : Window
     {
         Jeu _jeu = new Jeu();
-        private List<VuePirate> ListePirates { get; set; } = new List<VuePirate>();
-        private List<VueEscorte> ListeEscortes { get; set; } = new List<VueEscorte>();
-        private List<VueGalion> ListeGalions { get; set; } = new List<VueGalion>();
-        
+        private List<IVueNavire> ListeNavire { get; set; } = new List<IVueNavire>();
+
         //private List<UserControl> ListeNavires { get; set; } = new List<UserControl>();
 
         private DispatcherTimer _horloge = new DispatcherTimer();
@@ -27,10 +25,10 @@ namespace Tp3
         {
             //creer et placer les UserControl
             InitializeComponent();
-            CreerNavirePirate(350, 890);
-            CreerNavireGalion(350,10);
-            CreerNavireEscorte(200, 150);
-            CreerNavireEscorte(500, 150);
+            CreerNavire(350, 980, "pirate");
+            CreerNavire(350,10, "galion");
+            CreerNavire(200, 150, "escorte");
+            CreerNavire(500, 150, "escorte");
 
 
             //creer horloge
@@ -41,52 +39,35 @@ namespace Tp3
         }
 
         /// <summary>
-        /// Methode pour incluire un navire type Pirate dans le Jeu.
+        /// Methode pour incluire un navire dans le Jeu.
         /// </summary>
         /// <param name="left">l'emplacement "x" du navire</param>
         /// <param name="top">l'emplacement "y"du navire</param>
-        private void CreerNavirePirate(int left, int top)
+        /// <param name="type">si le navire est un Galion, un pirate ou un escorte</param>
+        private void CreerNavire(int left, int top, string type)
         {
-            VuePirate pirate = new VuePirate();
-            Surface.Children.Add(pirate);
-            Canvas.SetLeft(pirate, left);
-            Canvas.SetTop(pirate,top);
-            ListePirates.Add(pirate);
-            _jeu.AddListeNavires(1);
+            IVueNavire navire = null;
+            if(type == "pirate")
+            {
+                navire = new VuePirate();
+                _jeu.AddListeNavires(1);
+            } else if (type == "galion")
+            {
+                navire = new VueGalion();
+                _jeu.AddListeNavires(2);
+            } else if (type == "escorte")
+            {
+                navire = new VueEscorte();
+                _jeu.AddListeNavires(3);
+            }
+
+            Surface.Children.Add((UIElement)navire);
+            Canvas.SetLeft((UIElement)navire, left);
+            Canvas.SetTop((UIElement)navire, top);
+            ListeNavire.Add(navire);
+            
         }
-
-        /// <summary>
-        /// Methode pour incluire un navire type Galion dans le Jeu.
-        /// </summary>
-        /// <param name="left">l'emplacement "x" du navire</param>
-        /// <param name="top">l'emplacement "y"du navire</param>
-        private void CreerNavireGalion(int left, int top)
-        {
-            VueGalion galion = new VueGalion();
-
-            Surface.Children.Add(galion);
-            Canvas.SetLeft(galion, left);
-            Canvas.SetTop(galion, top);
-            ListeGalions.Add(galion);
-            _jeu.AddListeNavires(2);
-        }
-
-        /// <summary>
-        /// Methode pour incluire un navire type Escorte dans le Jeu.
-        /// </summary>
-        /// <param name="left">l'emplacement "x" du navire</param>
-        /// <param name="top">l'emplacement "y"du navire</param>
-        private void CreerNavireEscorte(int left, int top)
-        {
-            VueEscorte escorte = new VueEscorte();
-
-            Surface.Children.Add(escorte);
-            Canvas.SetLeft(escorte, left);
-            Canvas.SetTop(escorte, top);
-            ListeEscortes.Add(escorte);
-            _jeu.AddListeNavires(3);
-        }
-
+        
         /// <summary>
         /// Replacer e ataquer a chaque tic de l'horloge.
         /// </summary>
@@ -94,20 +75,23 @@ namespace Tp3
         /// <param name="e"></param>
         private void HorlogeAvance(object sender, EventArgs e)
         {
-            foreach (VuePirate pirate in ListePirates)
+
+            for (int i = 0; i < ListeNavire.Count; i++)
             {
-                pirate.ReplacerNavire(Surface);
+                if (ListeNavire[i] is VueGalion)
+                {
+                    ((VueGalion)ListeNavire[i]).ReplacerNavire();
+                } 
+                else if (ListeNavire[i] is VueEscorte)
+                {
+                    ((VueEscorte)ListeNavire[i]).ReplacerNavire();
+                }
+
+                ListeNavire[i].ValiderMouvement(Surface);
+                EviterColision(ListeNavire[i]);
+                ListeNavire[i].MouvementerNavire();
             }
 
-            foreach (VueEscorte escorte in ListeEscortes)
-            {
-                escorte.MouvementerNavire(Surface);
-            }
-
-            foreach (VueGalion galion in ListeGalions)
-            {
-                galion.MouvementerNavire(Surface);
-            }
         }
 
         /// <summary>
@@ -115,30 +99,57 @@ namespace Tp3
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e">Type de button appuie</param>
-       private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            
-            foreach (VuePirate pirate in ListePirates)
+            foreach (IVueNavire navire in ListeNavire)
             {
-                switch (e.Key)
+                if (navire is VuePirate)
                 {
-                    case Key.Left:
-                        pirate.MouvementerNavire(Buttons.Gauche);
-                        break;
-                    case Key.Right:
-                        pirate.MouvementerNavire(Buttons.Droit);
-                        break;
-                    case Key.Up:
-                        pirate.MouvementerNavire(Buttons.Haut);
-                        break;
-                    case Key.Down:
-                        pirate.MouvementerNavire(Buttons.Bas);
-                        break;
-                    case Key.Space:
-                        break;
+                    switch (e.Key)
+                    {
+                        case Key.Left:
+                            ((VuePirate)navire).ReplacerNavirePirate(Buttons.Gauche);
+                            break;
+                        case Key.Right:
+                            ((VuePirate)navire).ReplacerNavirePirate(Buttons.Droit);
+                            break;
+                        case Key.Up:
+                            ((VuePirate)navire).ReplacerNavirePirate(Buttons.Haut);
+                            break;
+                        case Key.Down:
+                            ((VuePirate)navire).ReplacerNavirePirate(Buttons.Bas);
+                            break;
+                        case Key.Space:
+                            break;
+                    }
                 }
             }
-            
+
+        }
+
+
+        public void EviterColision(IVueNavire navireReference)
+        {
+            List<double> positionNavireReference = navireReference.PositionNavire();
+            List<double> positionNavireEvalue = null;
+
+            foreach (IVueNavire navireEvalue in ListeNavire)
+            {
+                if (!Object.ReferenceEquals(navireEvalue, navireReference))
+                {
+                    positionNavireEvalue = navireEvalue.PositionNavire();
+
+                    if ((positionNavireReference[2] >= positionNavireEvalue[2] && positionNavireReference[2] <= positionNavireEvalue[3]) ||
+                        (positionNavireReference[3] <= positionNavireEvalue[3] && positionNavireReference[3] >= positionNavireEvalue[2]))
+                    {
+                        if ((positionNavireReference[0] >= positionNavireEvalue[0] && positionNavireReference[0] <= positionNavireEvalue[1]) ||
+                            (positionNavireReference[1] <= positionNavireEvalue[1] && positionNavireReference[1] >= positionNavireEvalue[0]))
+                        {
+                            navireReference.BloquerMouvement();
+                        }
+                    }
+                }
+            }
         }
 
 
