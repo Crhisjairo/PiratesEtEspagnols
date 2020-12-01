@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using PiratesEtEspagnols;
@@ -8,18 +9,21 @@ namespace Tp3
     /// <summary>
     /// Logique d'interaction pour VueGalion.xaml
     /// </summary>
-    public partial class VueGalion : UserControl
+    public partial class VueGalion : UserControl, IVueNavire
     {
         private static ModeleGalion _galion = new ModeleGalion();
 
         private const int Acceleration = 2;
         public double ChangementPositionX { get; set; }
         public double ChangementPositionY { get; set; }
+        private double NextY { get; set; }
+        private double NextX { get; set; }
 
         public VueGalion()
         {
             InitializeComponent();
         }
+
         public void ChangerEtat(EtatNavire etat)
         {
            // _galion.ChangerEtat();
@@ -35,9 +39,7 @@ namespace Tp3
         }
 
 
-
-
-        public void MouvementerNavire(Canvas surface)
+        public void ReplacerNavire()
         {
             Random random = new Random();
             int choixDirection = random.Next(45);
@@ -62,44 +64,63 @@ namespace Tp3
             {
                 ChangementPositionX += 0;
             }
-
-            ValiderMouvement(surface);
-
-            ReplacerNavire();
-
+            
         }
 
         public void ValiderMouvement(Canvas surface)
         {
-            double nextY = Canvas.GetTop(this) + ChangementPositionY;
-            double nextX = Canvas.GetLeft(this) + ChangementPositionX;
+            NextY = Canvas.GetTop(this) + ChangementPositionY;
+            NextX = Canvas.GetLeft(this) + ChangementPositionX;
 
-            if (nextY < 0)
+            if (NextY < 0)
             {
                 ChangementPositionY = 0;
             }
-            else if (nextY + ActualHeight > surface.ActualHeight)
+            else if (NextY + ActualHeight > surface.ActualHeight)
             {
-                ChangementPositionY = 0;
+                ChangementPositionY = surface.ActualHeight - (NextY + ActualHeight);
             }
 
-            if (nextX < 0)
+            if (NextX < 0)
             {
                 ChangementPositionX = 0;
             }
-            else if (nextX + ActualWidth > surface.ActualWidth)
+            else if (NextX + ActualWidth > surface.ActualWidth)
             {
-                ChangementPositionX = 0;
+                ChangementPositionX = surface.ActualWidth - (NextX + ActualWidth);
             }
 
+            MouvementerNavire();
         }
 
-        public void ReplacerNavire()
+        public void MouvementerNavire()
         {
-
             Canvas.SetTop(this, Canvas.GetTop(this) + ChangementPositionY);
             Canvas.SetLeft(this, Canvas.GetLeft(this) + ChangementPositionX);
+        }
 
+
+        public List<double> PositionNavire()
+        {
+            List<double> ListePositionNavire = new List<double>();
+
+            double gauche = NextX;//Canvas.GetLeft(this);
+            ListePositionNavire.Add(gauche);
+            double droit = gauche + ActualWidth;
+            ListePositionNavire.Add(droit);
+
+            double haut = NextY;//Canvas.GetTop(this);
+            ListePositionNavire.Add(haut);
+            double bas = haut + ActualHeight;
+            ListePositionNavire.Add(bas);
+
+            return ListePositionNavire;
+        }
+
+        public void BloquerMouvement()
+        {
+            ChangementPositionY = 0;
+            ChangementPositionX = 0;
         }
 
     }
