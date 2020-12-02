@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using PiratesEtEspagnols;
@@ -8,7 +9,7 @@ namespace Tp3
     /// <summary>
     /// Logique d'interaction pour VueEscorte.xaml
     /// </summary>
-    public partial class VueEscorte : UserControl
+    public partial class VueEscorte : UserControl, IVueNavire
     {
         private static ModeleEscorte _escorte = new ModeleEscorte();
         private TypeEscorte typeEscorte;
@@ -116,11 +117,14 @@ namespace Tp3
             }
         }
 
+
+
+
         /// <summary>
         /// Fait le choix vers quelle direction le navire doit aller.
         /// </summary>
         /// <param name="surface">La surface danns laquele le navire est placé</param>
-        public void MouvementerNavire(Canvas surface)
+        public void ReplacerNavire()
         {
             Random random = new Random();
             int choixDirection = random.Next(45);
@@ -146,10 +150,6 @@ namespace Tp3
                 ChangementPositionX += 0;
             }
 
-            ValiderMouvement(surface);
-
-            ReplacerNavire();
-
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Tp3
             }
             else if (nextY + ActualHeight > surface.ActualHeight)
             {
-                ChangementPositionY = 0;
+                ChangementPositionY = surface.ActualHeight - (nextY + ActualHeight);
             }
 
             if (nextX < 0)
@@ -176,7 +176,7 @@ namespace Tp3
             }
             else if (nextX + ActualWidth > surface.ActualWidth)
             {
-                ChangementPositionX = 0;
+                ChangementPositionX = surface.ActualWidth - (nextX + ActualWidth);
             }
 
         }
@@ -184,13 +184,35 @@ namespace Tp3
         /// <summary>
         /// Sert à placer le navire dans le canvas.
         /// </summary>
-        public void ReplacerNavire()
+        public void MouvementerNavire()
         {
-
             Canvas.SetTop(this, Canvas.GetTop(this) + ChangementPositionY);
             Canvas.SetLeft(this, Canvas.GetLeft(this) + ChangementPositionX);
-            
         }
 
+
+
+        public List<double> PositionNavire()
+        {
+            List<double> ListePositionNavire = new List<double>();
+
+            double gauche = Canvas.GetLeft(this);
+            ListePositionNavire.Add(gauche);
+            double droit = gauche + ActualWidth;
+            ListePositionNavire.Add(droit);
+
+            double haut = Canvas.GetTop(this);
+            ListePositionNavire.Add(haut);
+            double bas = haut + ActualHeight;
+            ListePositionNavire.Add(bas);
+
+            return ListePositionNavire;
+        }
+
+        public void BloquerMouvement()
+        {
+            ChangementPositionY = 0;
+            ChangementPositionX = 0;
+        }
     }
 }
