@@ -22,7 +22,7 @@ namespace Tp3
         //private List<UserControl> ListeNavires { get; set; } = new List<UserControl>();
 
         private DispatcherTimer _horloge = new DispatcherTimer();
-
+        
         public MainWindow()
         {
             //creer et placer les UserControl
@@ -32,12 +32,23 @@ namespace Tp3
             CreerNavireEscorte(200, 150);
             CreerNavireEscorte(500, 150);
 
+            CreerHorlogeMouvement();
 
-            //creer horloge
+        }
+
+        private void CreerHorlogeMouvement()
+        {
             _horloge.Interval = TimeSpan.FromMilliseconds(100);
             _horloge.IsEnabled = true;
+            //Méthodes à executer à chaque tick
             _horloge.Tick += HorlogeAvance;
+
             _horloge.Start();
+        }
+
+        private void SetNiveau()
+        {
+
         }
 
         /// <summary>

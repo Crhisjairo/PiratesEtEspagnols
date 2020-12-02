@@ -63,6 +63,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MenuPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VueGalion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -77,6 +81,9 @@
     </Compile>
     <Compile Include="Balle.xaml.cs">
       <DependentUpon>Balle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuPrincipal.xaml.cs">
+      <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
     <Compile Include="VueGalion.xaml.cs">
       <DependentUpon>VueGalion.xaml</DependentUpon>
@@ -132,7 +139,9 @@
       <Name>PiratesEtEspagnols</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\MenuPrincipal\Background.gif" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Effects\Explosion1.png" />
     <Resource Include="images\Effects\Explosion2.png" />
@@ -194,6 +203,13 @@
     <Resource Include="images\Navires\Pirate\PirateEtat2.png" />
     <Resource Include="images\Navires\Pirate\PirateEtat3.png" />
     <Resource Include="images\Navires\Pirate\PirateEtat4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\MenuPrincipal\ImageButton.gif" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\HUD\HUDBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
