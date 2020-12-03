@@ -16,11 +16,8 @@ namespace Tp3
     {
         Jeu _jeu = new Jeu();
         private List<IVueNavire> ListeNavire { get; set; } = new List<IVueNavire>();
-
-        //private List<UserControl> ListeNavires { get; set; } = new List<UserControl>();
-
         private DispatcherTimer _horloge = new DispatcherTimer();
-
+        
         public MainWindow()
         {
             //creer et placer les UserControl
@@ -30,12 +27,23 @@ namespace Tp3
             CreerNavire(200, 150, "escorte");
             CreerNavire(500, 150, "escorte");
 
+            CreerHorlogeMouvement();
 
-            //creer horloge
-            _horloge.Interval = TimeSpan.FromMilliseconds(100);
+        }
+
+        private void CreerHorlogeMouvement()
+        {
+            _horloge.Interval = TimeSpan.FromMilliseconds(300);
             _horloge.IsEnabled = true;
+            //Méthodes à executer à chaque tick
             _horloge.Tick += HorlogeAvance;
+
             _horloge.Start();
+        }
+
+        private void SetNiveau()
+        {
+
         }
 
         /// <summary>
@@ -127,7 +135,6 @@ namespace Tp3
 
         }
 
-
         public void EviterColision(IVueNavire navireReference)
         {
             List<double> positionNavireReference = navireReference.PositionNavire();
@@ -151,7 +158,7 @@ namespace Tp3
                 }
             }
         }
-
+        
 
     }
 }

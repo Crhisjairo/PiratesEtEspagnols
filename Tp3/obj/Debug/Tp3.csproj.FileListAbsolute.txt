@@ -1,7 +1,6 @@
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.exe.config
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.exe
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\bin\Debug\Tp3.pdb
-C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csprojAssemblyReference.cache
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Balle.g.cs
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\MainWindow.g.cs
 C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\VuePirate.g.cs
@@ -52,3 +51,10 @@ D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\
 D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csproj.CopyComplete
 D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.exe
 D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.pdb
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\MenuPrincipal.g.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\MenuPrincipal.baml
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\App.baml
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csprojAssemblyReference.cache
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\MenuPrincipal.g.cs
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\App.baml
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\MenuPrincipal.baml

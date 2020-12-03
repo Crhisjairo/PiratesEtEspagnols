@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tp3"
         mc:Ignorable="d"
-        Title="Jeu Adriana et Christian" Height="1050" Width="800" KeyDown="Window_KeyDown">
-    <Canvas x:Name="Surface">
+        WindowStyle="ToolWindow"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Jeu Adriana et Christian" Height="1050" Width="900" KeyDown="Window_KeyDown">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-    </Canvas>
+        <!--Premier Grid-->
+        <Grid Grid.Column="0">
+            <Canvas x:Name="Surface" Grid.Column="0" />
+        </Grid>
+        
+
+        <!--Deuxième Grid, le HUD-->
+        <Grid Grid.Column="1">
+            <Grid.Background>
+                <ImageBrush ImageSource="images/HUD/HUDBackground.png"></ImageBrush>
+            </Grid.Background>
+
+            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2"></Border>
+
+            <!--Elements-->
+
+        </Grid>
+
+    </Grid>
+    
+    
 </Window>
