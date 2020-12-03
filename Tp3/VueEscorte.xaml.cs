@@ -14,9 +14,10 @@ namespace Tp3
         private static ModeleEscorte _escorte = new ModeleEscorte();
         private TypeEscorte typeEscorte;
         
-        private const int Acceleration = 4;
+        private const int Acceleration = 2;
         public double ChangementPositionX { get; set; }
         public double ChangementPositionY { get; set; }
+        private static Random _random = new Random();
 
         public VueEscorte()
         {
@@ -126,8 +127,8 @@ namespace Tp3
         /// <param name="surface">La surface danns laquele le navire est placé</param>
         public void ReplacerNavire()
         {
-            Random random = new Random();
-            int choixDirection = random.Next(45);
+            
+            int choixDirection = _random.Next(45);
 
             if (choixDirection < 10)
             {
@@ -211,8 +212,8 @@ namespace Tp3
 
         public void BloquerMouvement()
         {
-            ChangementPositionY = 0;
-            ChangementPositionX = 0;
+            ChangementPositionY *= -1;
+            ChangementPositionX *= -1;
         }
     }
 }

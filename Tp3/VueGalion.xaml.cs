@@ -13,7 +13,7 @@ namespace Tp3
     {
         private static ModeleGalion _galion = new ModeleGalion();
 
-        private const int Acceleration = 2;
+        private const int Acceleration = 1;
         public double ChangementPositionX { get; set; }
         public double ChangementPositionY { get; set; }
         private double NextY { get; set; }
@@ -42,21 +42,21 @@ namespace Tp3
         public void ReplacerNavire()
         {
             Random random = new Random();
-            int choixDirection = random.Next(45);
+            int choixDirection = random.Next(5);
 
-            if (choixDirection < 10)
+            if (choixDirection < 1)
             {
                 ChangementPositionY += Acceleration;
             }
-            else if (choixDirection < 20)
+            else if (choixDirection < 2)
             {
                 ChangementPositionY -= Acceleration;
             }
-            else if (choixDirection < 30)
+            else if (choixDirection < 3)
             {
                 ChangementPositionX -= Acceleration;
             }
-            else if (choixDirection < 40)
+            else if (choixDirection < 4)
             {
                 ChangementPositionX += Acceleration;
             }
@@ -74,7 +74,7 @@ namespace Tp3
 
             if (NextY < 0)
             {
-                ChangementPositionY = 0;
+                ChangementPositionY = 1;
             }
             else if (NextY + ActualHeight > surface.ActualHeight)
             {
@@ -83,7 +83,7 @@ namespace Tp3
 
             if (NextX < 0)
             {
-                ChangementPositionX = 0;
+                ChangementPositionX = 1;
             }
             else if (NextX + ActualWidth > surface.ActualWidth)
             {
@@ -119,8 +119,8 @@ namespace Tp3
 
         public void BloquerMouvement()
         {
-            ChangementPositionY = 0;
-            ChangementPositionX = 0;
+            ChangementPositionY *= -1;
+            ChangementPositionX *= -1;
         }
 
     }
