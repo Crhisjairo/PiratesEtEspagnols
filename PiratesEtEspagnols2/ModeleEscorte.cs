@@ -10,20 +10,12 @@ namespace PiratesEtEspagnols
         */
         public ModeleEscorte()
         {
+            CanonsCote = 16;
+            MembresInitial = 100;
+            MembresRestant = MembresInitial;
+            _canon = new Canon(0.3, 6, 15);
+            EstEnemiePirate = true;
         }
-
-        /*
-         VitesseDeplacement = 2;
-CanonsDroit = 16;
-CanonsGauche = 16;
-MembresInitial = 100;
-MembresRestant = MembresInitial;
-canon.Puissance = 0; //TODO
-canon.TempsRecharge = 0; //TODO
-canon.ChamDeTire = 0; //TODO
-EstEnemiePirate = true;
-*/
-
 
     }
 

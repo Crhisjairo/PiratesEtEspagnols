@@ -11,13 +11,15 @@ namespace Tp3
     /// </summary>
     public partial class VueGalion : UserControl, IVueNavire
     {
-        private static ModeleGalion _galion = new ModeleGalion();
+        private Navire _modeleGalion = new ModeleGalion();
 
         private const int Acceleration = 1;
+        internal int TickHorloge { set; get; }
         public double ChangementPositionX { get; set; }
         public double ChangementPositionY { get; set; }
         private double NextY { get; set; }
         private double NextX { get; set; }
+
 
         public VueGalion()
         {
@@ -99,6 +101,22 @@ namespace Tp3
             Canvas.SetLeft(this, Canvas.GetLeft(this) + ChangementPositionX);
         }
 
+        public List<double> PositionTireNavire()
+        {
+            List<double> ListePositionNavire = new List<double>();
+
+            double gauche = Canvas.GetLeft(this);
+            ListePositionNavire.Add(gauche - _modeleGalion._canon.ChamDeTire);
+            double droit = gauche + ActualWidth;
+            ListePositionNavire.Add(droit + _modeleGalion._canon.ChamDeTire);
+
+            double haut = Canvas.GetTop(this);
+            ListePositionNavire.Add(haut);
+            double bas = haut + ActualHeight;
+            ListePositionNavire.Add(bas);
+
+            return ListePositionNavire;
+        }
 
         public List<double> PositionNavire()
         {
@@ -119,9 +137,35 @@ namespace Tp3
 
         public void BloquerMouvement()
         {
-            ChangementPositionY *= -1;
-            ChangementPositionX *= -1;
+            ChangementPositionY = 0;
+            ChangementPositionX = 0;
         }
 
+
+        public int Tirer()
+        {
+            double attaque = _modeleGalion.Tirer(TickHorloge);
+            return (int)attaque;
+        }
+
+        public string GetVie()
+        {
+            string textVie = "Vie Galion : ";
+            int vie = (_modeleGalion).DonnerQuantiteMembresRestants();
+            return textVie + vie.ToString();
+        }
+
+        public Navire GetTypeNavire()
+        {
+            return _modeleGalion;
+        }
+
+        public void SubirAttaque(int forceAttaque, bool estEnemiePirate)
+        {
+            if (estEnemiePirate != _modeleGalion.EstEnemiePirate)
+            {
+                _modeleGalion.EtreAttaque(forceAttaque);
+            }
+        }
     }
 }

@@ -8,29 +8,49 @@ namespace PiratesEtEspagnols
     {
         public static List<Navire> ListeNavires = new List<Navire>();
         
-        protected int VitesseDeplacement { get; set; } = 1;
-        protected double Efficacite { get; set; }
-
-        public Canon canon = new Canon();
+        public Canon _canon = null;
         protected int CanonsCote { get; set; }
-        protected int CanonsAvant { get; set; } = 0;
-        
         protected int MembresInitial { get; set; }
         protected int MembresRestant { get; set; }
         protected bool EstHorsCombat { get; set; } = false;
-
+        public bool EstEnemiePirate { get; set; }
         
-        protected bool EstEnemiePirate { get; set; }
-        
-        private double TailleNavire { get; set; }
-        private double LongueurNavire { get; set; }
-        public double PositionX { get; set; }
-        public double PositionY { get; set; }
-
         public Navire()
         {
         }
 
+        public double Tirer(int tick)
+        {
+            double attaque = 0;
+            double efficience = (double)MembresInitial / MembresRestant;
+            int tempsRecharche = tick - _canon.DernierTir;
 
+            if (_canon.TempsRecharge <= tempsRecharche)
+            {
+                _canon.DernierTir = tick;
+                attaque = _canon.Puissance * CanonsCote * efficience;
+            }
+
+            return attaque;
+        }
+
+        public void EtreAttaque(int attaque)
+        {
+
+            if (MembresRestant - attaque <= MembresInitial/3)
+            {
+                MembresRestant -= attaque;
+                EstHorsCombat = true;
+            }
+            else
+            {
+                MembresRestant -= attaque;
+            }
+        }
+
+        public int DonnerQuantiteMembresRestants()
+        {
+            return MembresRestant;
+        }
     }
 }

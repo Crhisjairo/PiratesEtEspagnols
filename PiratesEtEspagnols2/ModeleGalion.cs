@@ -6,23 +6,19 @@ namespace PiratesEtEspagnols
 {
     public class ModeleGalion : Navire
     {
-        public int CantiteOr { get; private set; }
+        internal int CantiteOr { get; private set; }
+        internal int CanonsArrier { get; set; }
 
         public ModeleGalion()
         {
-           /*
-            VitesseDeplacement = 3;
-            CanonsDroit = 16;
-            CanonsGauche = 16;
-            MembresInitial = 100;
+            CanonsCote = 36;
+            CanonsArrier = 2; 
+            MembresInitial = 200;
             MembresRestant = MembresInitial;
-            canon.Puissance = 0; //TODO
-            canon.TempsRecharge = 0; //TODO
-            canon.ChamDeTire = 0; //TODO
+            _canon = new Canon(0.3, 10, 20);
             EstEnemiePirate = true;
+            CantiteOr = 0; //TODO
+        }
 
-            CantiteOr = 0; //TODO aussi
-        */
-            }
     }
 }

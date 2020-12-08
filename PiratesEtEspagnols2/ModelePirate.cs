@@ -10,14 +10,10 @@ namespace PiratesEtEspagnols
 
         public ModelePirate()
         {
-            /*VitesseDeplacement = 3;
-            CanonsDroit = 16;
-            CanonsGauche = 16;
-            MembresInitial = 100;
+            CanonsCote = 5;
+            MembresInitial = 80;
             MembresRestant = MembresInitial;
-            canon.Puissance = 0; //TODO
-            canon.TempsRecharge = 0; //TODO
-            canon.ChamDeTire = 0; //TODO
+            _canon = new Canon(1.5, 2, 10);
             EstEnemiePirate = false;
 
             _Or = 10; //L'or

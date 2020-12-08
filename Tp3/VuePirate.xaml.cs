@@ -11,12 +11,15 @@ namespace Tp3
     /// </summary>
     public partial class VuePirate : UserControl, IVueNavire
     {
-        private static ModelePirate _modelePirate = new ModelePirate();
+        private Navire _modelePirate = new ModelePirate();
 
 
-        private const int Acceleration = 8;
-        public double ChangementPositionX { get; set; }
-        public double ChangementPositionY { get; set; }
+        private const int Acceleration = 4;
+        internal int TickHorloge { set; get; } = 0;
+        private double ChangementPositionX { get; set; }
+        private double ChangementPositionY { get; set; }
+
+
 
         // images/Navires/Pirate/PirateEtat1.png
         public VuePirate()
@@ -37,7 +40,6 @@ namespace Tp3
             else if (etat == EtatNavire.Mort)
                 ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat4.png"));
         }
-
 
         /// <summary>
         /// Defire vers quelle direction le navire doit se deplacer.
@@ -121,12 +123,55 @@ namespace Tp3
             return ListePositionNavire;
         }
 
+        
+        public List<double> PositionTireNavire()
+        {
+            List<double> ListePositionNavire = new List<double>();
+
+            double gauche = Canvas.GetLeft(this); 
+            ListePositionNavire.Add(gauche - _modelePirate._canon.ChamDeTire);
+            double droit = gauche + ActualWidth;
+            ListePositionNavire.Add(droit + _modelePirate._canon.ChamDeTire);
+
+            double haut = Canvas.GetTop(this);
+            ListePositionNavire.Add(haut);
+            double bas = haut + ActualHeight;
+            ListePositionNavire.Add(bas);
+
+            return ListePositionNavire;
+        }
+
+
         public void BloquerMouvement()
         {
             ChangementPositionY = 0;
             ChangementPositionX = 0;
         }
 
+        public int Tirer()
+        {
+            double attaque = _modelePirate.Tirer(TickHorloge);
+            return (int) attaque;
+        }
 
+        public string GetVie()
+        {
+            string textVie = "Vie Pirate : ";
+            int vie = (_modelePirate).DonnerQuantiteMembresRestants();
+            return textVie + vie.ToString();
+        }
+
+        public Navire GetTypeNavire()
+        {
+            return _modelePirate;
+        }
+
+        public void SubirAttaque(int forceAttaque, bool estEnemiePirate)
+        {
+            if (estEnemiePirate != _modelePirate.EstEnemiePirate)
+            {
+                _modelePirate.EtreAttaque(forceAttaque);
+            }
+        }
     }
 }
