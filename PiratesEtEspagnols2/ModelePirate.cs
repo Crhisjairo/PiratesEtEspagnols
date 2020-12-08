@@ -6,6 +6,7 @@ namespace PiratesEtEspagnols
 {
     public class ModelePirate : Navire
     {
+        public int _Or { get; private set; }
 
         public ModelePirate()
         {
@@ -18,7 +19,12 @@ namespace PiratesEtEspagnols
             canon.TempsRecharge = 0; //TODO
             canon.ChamDeTire = 0; //TODO
             EstEnemiePirate = false;
-        */}
+
+            _Or = 10; //L'or
+
+            */
+
+        }
 
         public void VolerMembres()
         {
@@ -29,6 +35,7 @@ namespace PiratesEtEspagnols
         {
 
         }
+        
 
     }
 }

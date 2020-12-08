@@ -96,6 +96,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="VueMagasin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="VuePirate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +110,9 @@
       <DependentUpon>VueEscorte.xaml</DependentUpon>
     </Compile>
     <Compile Include="IVueNavire.cs" />
+    <Compile Include="VueMagasin.xaml.cs">
+      <DependentUpon>VueMagasin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VuePirate.xaml.cs">
       <DependentUpon>VuePirate.xaml</DependentUpon>
     </Compile>
