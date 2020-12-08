@@ -18,7 +18,6 @@ namespace PiratesEtEspagnols
 
             _Or = 10; //L'or
 
-            */
 
         }
 

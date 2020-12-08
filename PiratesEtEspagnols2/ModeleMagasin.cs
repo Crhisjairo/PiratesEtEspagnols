@@ -3,17 +3,17 @@ using PiratesEtEspagnols;
 
 namespace PiratesEtEspagnols2
 {
-    class Magasin
+    public class ModeleMagasin
     {
         /// <summary>
         /// Pirate qui contiendra l'or. Il est se crée dans la classe Jeu.
         /// </summary>
         private ModelePirate _pirate;
-        public Magasin(ModelePirate pirate)
+
+        public ModeleMagasin(ModelePirate pirate)
         {
             _pirate = pirate;
         }
 
-        
     }
 }

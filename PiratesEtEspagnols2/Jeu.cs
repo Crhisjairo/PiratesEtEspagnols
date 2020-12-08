@@ -45,5 +45,14 @@ namespace PiratesEtEspagnols
 
         }
 
+        /// <summary>
+        /// Permet de recuperer le pirate pour utiliser ses propriétés.
+        /// Ex: l'or, la vitesse, la puissance, etc.
+        /// </summary>
+        /// <returns></returns>
+        public ModelePirate GetPirate()
+        {
+            return _pirate;
+        }
     }
 }

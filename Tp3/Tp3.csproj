@@ -63,6 +63,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FenetreMagasin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MenuPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +86,9 @@
     <Compile Include="Balle.xaml.cs">
       <DependentUpon>Balle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FenetreMagasin.xaml.cs">
+      <DependentUpon>FenetreMagasin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
@@ -96,10 +103,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VueMagasin.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="VuePirate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -110,9 +113,6 @@
       <DependentUpon>VueEscorte.xaml</DependentUpon>
     </Compile>
     <Compile Include="IVueNavire.cs" />
-    <Compile Include="VueMagasin.xaml.cs">
-      <DependentUpon>VueMagasin.xaml</DependentUpon>
-    </Compile>
     <Compile Include="VuePirate.xaml.cs">
       <DependentUpon>VuePirate.xaml</DependentUpon>
     </Compile>
@@ -184,7 +184,7 @@
     <Resource Include="images\Icones\Navires\sailLarge %285%29.png" />
     <Resource Include="images\Icones\Navires\sailLarge %286%29.png" />
     <Resource Include="images\Icones\Navires\sailLarge %287%29.png" />
-    <Resource Include="images\Icones\Navires\sailLarge %288%29.png" />
+    <Resource Include="images\Icones\Navires\PirateLogoEtat1.png" />
     <Resource Include="images\Icones\Navires\sailLarge %289%29.png" />
     <Resource Include="images\License.txt" />
     <Resource Include="images\Navires\Escortes\Escorte1Etat1.png" />
@@ -215,9 +215,23 @@
   <ItemGroup>
     <Resource Include="images\MenuPrincipal\ImageButton.gif" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\Magasin\MagasinTitre.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\HUD\HUDBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Magasin\MagasinLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icones\MonnaieOr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Magasin\Articles\CannonLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Magasin\Articles\DegatLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,22 +14,27 @@ namespace Tp3
     /// </summary>
     public partial class MainWindow : Window
     {
-        Jeu _jeu = new Jeu();
+        private static Jeu _jeu = new Jeu();
+
+        private static FenetreMagasin fenetreMagasin = new FenetreMagasin(_jeu.GetPirate());
+
         private List<IVueNavire> ListeNavire { get; set; } = new List<IVueNavire>();
         private List<int> ListAttaques { get; set; } = new List<int>();
-        private DispatcherTimer _horloge = new DispatcherTimer();
         
+        private static DispatcherTimer _horloge = new DispatcherTimer();
+
         public MainWindow()
         {
             //creer et placer les UserControl
             InitializeComponent();
+
+            //**À CHANGER** Faut initialiser dans _jeu. _jeu va tout donner//
             CreerNavire(350, 980, "pirate");
             CreerNavire(350,10, "galion");
             CreerNavire(200, 150, "escorte");
             CreerNavire(500, 150, "escorte");
 
             CreerHorlogeMouvement();
-
         }
 
         private void CreerHorlogeMouvement()
@@ -39,6 +44,23 @@ namespace Tp3
             //Méthodes à executer à chaque tick
             _horloge.Tick += HorlogeAvance;
 
+            DemarrerHorlogePrincipal();
+        }
+
+
+        /// <summary>
+        /// Permet d'arreter l'horloge principal.
+        /// </summary>
+        public static void ArreterHorlogePrincipal()
+        {
+            _horloge.Stop();
+        }
+
+        /// <summary>
+        /// Permet de démarrer l'horloge principal.
+        /// </summary>
+        public static void DemarrerHorlogePrincipal()
+        {
             _horloge.Start();
         }
 
@@ -189,7 +211,7 @@ namespace Tp3
 
         public void AfficherVie() /*CHANGER METHODE POUR AFFICER TOUS LES VIES*/ //TODO
         {
-            ViePirate.Text = ((VuePirate)ListeNavire[0]).GetVie();
+            //ViePirate.Text = ((VuePirate)ListeNavire[0]).GetVie();
 
         }
 
@@ -213,5 +235,24 @@ namespace Tp3
             }
         }
 
+        private void ButtonMagasin_OnClick(object sender, RoutedEventArgs e)
+        {
+            ArreterHorlogePrincipal();
+            fenetreMagasin.Show();
+
+        }
+
+        /// <summary>
+        /// Fermeture de la fenêtre.
+        /// Changement de cette méthode qui est appelé chaque fois qu'on appui sur le X.
+        /// Fermeture du programme explicitement. 
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+
+            Application.Current.Shutdown();
+        }
     }
 }
