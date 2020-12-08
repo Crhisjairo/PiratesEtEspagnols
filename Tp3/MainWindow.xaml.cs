@@ -16,6 +16,7 @@ namespace Tp3
     {
         Jeu _jeu = new Jeu();
         private List<IVueNavire> ListeNavire { get; set; } = new List<IVueNavire>();
+        private List<int> ListAttaques { get; set; } = new List<int>();
         private DispatcherTimer _horloge = new DispatcherTimer();
         
         public MainWindow()
@@ -73,9 +74,10 @@ namespace Tp3
             Canvas.SetLeft((UIElement)navire, left);
             Canvas.SetTop((UIElement)navire, top);
             ListeNavire.Add(navire);
+            ListAttaques.Add(0);
             
         }
-        
+
         /// <summary>
         /// Replacer e ataquer a chaque tic de l'horloge.
         /// </summary>
@@ -88,18 +90,33 @@ namespace Tp3
             {
                 if (ListeNavire[i] is VueGalion)
                 {
-                    ((VueGalion)ListeNavire[i]).ReplacerNavire();
-                } 
+                    ((VueGalion) ListeNavire[i]).ReplacerNavire();
+                    ((VueGalion) ListeNavire[i]).TickHorloge++;
+
+                }
                 else if (ListeNavire[i] is VueEscorte)
                 {
-                    ((VueEscorte)ListeNavire[i]).ReplacerNavire();
+                    ((VueEscorte) ListeNavire[i]).ReplacerNavire();
+                    ((VueEscorte) ListeNavire[i]).TickHorloge++;
+                }
+                else if (ListeNavire[i] is VuePirate)
+                {
+                    ((VuePirate) ListeNavire[i]).TickHorloge++;
                 }
 
                 ListeNavire[i].ValiderMouvement(Surface);
                 EviterColision(ListeNavire[i]);
                 ListeNavire[i].MouvementerNavire();
+                ListAttaques[i] = ListeNavire[i].Tirer();
             }
 
+            for (int i = 0; i < ListeNavire.Count; i++)
+            {
+                VerifierSubitAttaque(i);
+
+            }
+
+            AfficherVie();
         }
 
         /// <summary>
@@ -146,19 +163,55 @@ namespace Tp3
                 {
                     positionNavireEvalue = navireEvalue.PositionNavire();
 
-                    if ((positionNavireReference[2] >= positionNavireEvalue[2] && positionNavireReference[2] <= positionNavireEvalue[3]) ||
-                        (positionNavireReference[3] <= positionNavireEvalue[3] && positionNavireReference[3] >= positionNavireEvalue[2]))
+                    if (VerifierColision(positionNavireReference, positionNavireEvalue))
                     {
-                        if ((positionNavireReference[0] >= positionNavireEvalue[0] && positionNavireReference[0] <= positionNavireEvalue[1]) ||
-                            (positionNavireReference[1] <= positionNavireEvalue[1] && positionNavireReference[1] >= positionNavireEvalue[0]))
-                        {
-                            navireReference.BloquerMouvement();
-                        }
+                        navireReference.BloquerMouvement();
                     }
                 }
             }
         }
-        
+
+        private bool VerifierColision(List<double> positionReference, List<double> positionEvalue)
+        {
+            bool estColision = false;
+
+            if ((positionReference[2] >= positionEvalue[2] && positionReference[2] <= positionEvalue[3]) ||
+                (positionReference[3] <= positionEvalue[3] && positionReference[3] >= positionEvalue[2]))
+            {
+                if ((positionReference[0] >= positionEvalue[0] && positionReference[0] <= positionEvalue[1]) ||
+                    (positionReference[1] <= positionEvalue[1] && positionReference[1] >= positionEvalue[0]))
+                {
+                    estColision = true;
+                }
+            }
+            return estColision;
+        }
+
+        public void AfficherVie() /*CHANGER METHODE POUR AFFICER TOUS LES VIES*/ //TODO
+        {
+            ViePirate.Text = ((VuePirate)ListeNavire[0]).GetVie();
+
+        }
+
+        public void VerifierSubitAttaque(int index)
+        {
+            List<double> positionNavireReference = ListeNavire[index].PositionTireNavire();
+
+            List<double> positionNavireEvalue = null;
+
+            foreach (IVueNavire navireEvalue in ListeNavire)
+            {
+                if (!Object.ReferenceEquals(navireEvalue, ListeNavire[index]))
+                {
+                    positionNavireEvalue = navireEvalue.PositionNavire();
+
+                    if (VerifierColision(positionNavireReference, positionNavireEvalue))
+                    {
+                        navireEvalue.SubirAttaque(ListAttaques[index], ListeNavire[index].GetTypeNavire().EstEnemiePirate); 
+                    }
+                }
+            }
+        }
 
     }
 }

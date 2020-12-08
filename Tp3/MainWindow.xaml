@@ -26,7 +26,7 @@
             <Grid.Background>
                 <ImageBrush ImageSource="images/HUD/HUDBackground.png"></ImageBrush>
             </Grid.Background>
-
+            <TextBlock x:Name="ViePirate" FontWeight="Bold">'Test Pirate'</TextBlock> <!-- RETIRER BUT DE CODE  -->
             <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2"></Border>
 
             <!--Elements-->

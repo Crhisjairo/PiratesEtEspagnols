@@ -11,10 +11,11 @@ namespace Tp3
     /// </summary>
     public partial class VueEscorte : UserControl, IVueNavire
     {
-        private static ModeleEscorte _escorte = new ModeleEscorte();
+        private Navire _modeleEscorte = new ModeleEscorte();
         private TypeEscorte typeEscorte;
         
         private const int Acceleration = 2;
+        internal int TickHorloge { set; get; }
         public double ChangementPositionX { get; set; }
         public double ChangementPositionY { get; set; }
         private static Random _random = new Random();
@@ -210,10 +211,53 @@ namespace Tp3
             return ListePositionNavire;
         }
 
+        public List<double> PositionTireNavire()
+        {
+            List<double> ListePositionNavire = new List<double>();
+
+            double gauche = Canvas.GetLeft(this);
+            ListePositionNavire.Add(gauche - _modeleEscorte._canon.ChamDeTire);
+            double droit = gauche + ActualWidth;
+            ListePositionNavire.Add(droit + _modeleEscorte._canon.ChamDeTire);
+
+            double haut = Canvas.GetTop(this);
+            ListePositionNavire.Add(haut);
+            double bas = haut + ActualHeight;
+            ListePositionNavire.Add(bas);
+
+            return ListePositionNavire;
+        }
+
         public void BloquerMouvement()
         {
-            ChangementPositionY *= -1;
-            ChangementPositionX *= -1;
+            ChangementPositionY = 0;
+            ChangementPositionX = 0;
+        }
+
+        public int Tirer()
+        {
+            double attaque = _modeleEscorte.Tirer(TickHorloge);
+            return (int)attaque;
+        }
+
+        public string GetVie()
+        {
+            string textVie = "Vie Escorte : ";
+            int vie = (_modeleEscorte).DonnerQuantiteMembresRestants();
+            return textVie + vie.ToString();
+        }
+
+        public Navire GetTypeNavire()
+        {
+            return _modeleEscorte;
+        }
+
+        public void SubirAttaque(int forceAttaque, bool estEnemiePirate)
+        {
+            if (estEnemiePirate != _modeleEscorte.EstEnemiePirate)
+            {
+                _modeleEscorte.EtreAttaque(forceAttaque);
+            }
         }
     }
 }
