@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PiratesEtEspagnols2;
 
 namespace PiratesEtEspagnols
 {
@@ -12,10 +13,11 @@ namespace PiratesEtEspagnols
         private ModeleGalion _galion = new ModeleGalion();
         private List<ModeleEscorte> _escortes = new List<ModeleEscorte>();
         private ModelePirate _pirate = new ModelePirate();
+        
 
         static void Main(string[] args)
         {
-            
+
         }
 
         public Jeu()
@@ -43,5 +45,14 @@ namespace PiratesEtEspagnols
 
         }
 
+        /// <summary>
+        /// Permet de recuperer le pirate pour utiliser ses propriétés.
+        /// Ex: l'or, la vitesse, la puissance, etc.
+        /// </summary>
+        /// <returns></returns>
+        public ModelePirate GetPirate()
+        {
+            return _pirate;
+        }
     }
 }

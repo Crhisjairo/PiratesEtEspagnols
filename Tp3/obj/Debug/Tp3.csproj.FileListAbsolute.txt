@@ -58,3 +58,7 @@ D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\
 D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\App.baml
 D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\MenuPrincipal.baml
 D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\Tp3.csprojAssemblyReference.cache
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\FenetreMagasin.g.cs
+C:\Users\Crhistian C\Documents\Projects\C#\Tp3\tp-3-christian-et-adriana\Tp3\obj\Debug\FenetreMagasin.baml
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\FenetreMagasin.g.cs
+D:\Adriana\BdeB\03. Applications interactives\TP3\tp-3-christian-et-adriana\Tp3\obj\Debug\FenetreMagasin.baml
