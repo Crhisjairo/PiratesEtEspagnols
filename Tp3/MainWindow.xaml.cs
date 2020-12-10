@@ -30,7 +30,9 @@ namespace Tp3
         /// <summary>
         /// Compteur de l'animation de présentation (Mouvement du background et message du niveau).
         /// </summary>
-        private int compteurAnimation = 0;
+        private int _compteurAnimationPresentation = 0;
+
+        private int _compteurAnimationBackground = 0;
 
         public MainWindow()
         {
@@ -56,27 +58,48 @@ namespace Tp3
             _horloge.Interval = TimeSpan.FromMilliseconds(100);
             _horloge.IsEnabled = true;
             //Méthodes à executer à chaque tick
-            _horloge.Tick += HorlogeAvanceAnimation; //d'abord, on ajoute l'animation pour la présentation
+            _horloge.Tick += HorlogeAvanceAnimationPresentation; //d'abord, on ajoute l'animation pour la présentation
             _horloge.Tick += VerifierAnimationFinit; //Verification si l'animation est finit.
 
             DemarrerHorlogePrincipal();
         }
 
-        private void HorlogeAvanceAnimation(object sender, EventArgs e)
+        private void HorlogeAvanceAnimationPresentation(object sender, EventArgs e)
         {
             //Changement de margin de l'images pour avoir l'impression qu'elle bouge.
-            NiveauBackground.Margin = new Thickness(0, -1214, 0, -18 - compteurAnimation * 30);
-            compteurAnimation ++;
+            NiveauBackground.Margin = new Thickness(0, -1214, 0, -18 - _compteurAnimationPresentation * 30);
+            _compteurAnimationPresentation ++;
         }
 
         private void VerifierAnimationFinit(object sender, EventArgs e)
         {
-            if (compteurAnimation > 20) //si le
+            if (_compteurAnimationPresentation > 20) //si le
             {
-                _horloge.Tick -= HorlogeAvanceAnimation; //supression de la méthode qu'animation.
+                _horloge.Tick -= HorlogeAvanceAnimationPresentation; //supression de la méthode qu'animation.
                 _horloge.Tick -= VerifierAnimationFinit;
+
                 _horloge.Tick += HorlogeAvanceJeu; //Ajout de la méthode qui roule le jeu.
+                _horloge.Tick += HorlogeAvanceAnimationBackground; //Ajout de la méthode qui déplace le background.
             }
+        }
+
+        private void HorlogeAvanceAnimationBackground(object sender, EventArgs e)
+        {
+            if (_compteurAnimationBackground % 5 == 0)
+            {
+                NiveauBackground.Margin = new Thickness(0, -1214, 0, 
+                    (-18 - _compteurAnimationPresentation * 30) - _compteurAnimationBackground * 2);
+            }
+
+            if (_compteurAnimationBackground > 390)
+            {
+                _horloge.Tick -= HorlogeAvanceAnimationBackground;
+            }
+
+            txtListeVueNavires.Text = _compteurAnimationBackground.ToString();
+            
+
+            _compteurAnimationBackground++;
         }
 
 
