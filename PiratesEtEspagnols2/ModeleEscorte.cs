@@ -6,6 +6,8 @@ namespace PiratesEtEspagnols
 {
     public class ModeleEscorte : Navire
     {
+        
+
         /*private TypeEscorte type = TypeEscorte.Cheval;
         */
         public ModeleEscorte()

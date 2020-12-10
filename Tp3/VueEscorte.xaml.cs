@@ -13,7 +13,10 @@ namespace Tp3
     {
         private Navire _modeleEscorte = new ModeleEscorte();
         private TypeEscorte typeEscorte;
-        
+
+        public static double PosInitX { get; } = 100; //100
+        public static double PosInitY { get; } = 200;
+
         private const int Acceleration = 2;
         internal int TickHorloge { set; get; }
         public double ChangementPositionX { get; set; }

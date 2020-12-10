@@ -6,6 +6,8 @@ namespace PiratesEtEspagnols
 {
     public class ModeleGalion : Navire
     {
+        
+
         internal int CantiteOr { get; private set; }
         internal int CanonsArrier { get; set; }
 

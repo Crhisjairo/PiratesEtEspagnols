@@ -13,6 +13,9 @@ namespace Tp3
     {
         private Navire _modeleGalion = new ModeleGalion();
 
+        public static double PosInitX { get; } = 450;
+        public static double PosInitY { get; } = 10;
+
         private const int Acceleration = 1;
         internal int TickHorloge { set; get; }
         public double ChangementPositionX { get; set; }
