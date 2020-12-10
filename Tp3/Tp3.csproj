@@ -89,6 +89,8 @@
     <Compile Include="FenetreMagasin.xaml.cs">
       <DependentUpon>FenetreMagasin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HorlogeAnimation.cs" />
+    <Compile Include="IVueNavire.cs" />
     <Compile Include="MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
     </Compile>
@@ -112,7 +114,6 @@
     <Compile Include="VueEscorte.xaml.cs">
       <DependentUpon>VueEscorte.xaml</DependentUpon>
     </Compile>
-    <Compile Include="IVueNavire.cs" />
     <Compile Include="VuePirate.xaml.cs">
       <DependentUpon>VuePirate.xaml</DependentUpon>
     </Compile>
@@ -232,6 +233,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Magasin\Articles\DegatLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\OceanBackground.gif" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\Niveaux\BackgroundNiveau1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

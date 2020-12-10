@@ -13,7 +13,7 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center">
-            <Label Content="Titre ici xd" Padding="0, 100, 0, 0" FontSize="50"/>
+            <Label Content="Pirates et Espagnols" Padding="0, 100, 0, 0" FontSize="50"/>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center" Margin="200,218,200,217" >

@@ -13,6 +13,8 @@ namespace Tp3
     {
         private Navire _modelePirate = new ModelePirate();
 
+        public static double PosInitX { get; } = 320;
+        public static double PosInitY { get; } = 800;
 
         private const int Acceleration = 4;
         internal int TickHorloge { set; get; } = 0;

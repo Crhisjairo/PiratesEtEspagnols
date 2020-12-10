@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using PiratesEtEspagnols;
 
 namespace Tp3

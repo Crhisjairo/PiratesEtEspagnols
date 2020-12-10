@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Controls;
 
 namespace PiratesEtEspagnols
 {
     public class ModelePirate : Navire
     {
+        
+
         public int _Or { get; private set; }
 
         public ModelePirate()
@@ -17,13 +20,12 @@ namespace PiratesEtEspagnols
             EstEnemiePirate = false;
 
             _Or = 10; //L'or
-
+            
 
         }
 
         public void VolerMembres()
         {
-
         }
 
         public void VolerOr()
