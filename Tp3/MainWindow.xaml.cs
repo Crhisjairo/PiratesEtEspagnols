@@ -211,7 +211,7 @@ namespace Tp3
 
         public void AfficherVie() /*CHANGER METHODE POUR AFFICER TOUS LES VIES*/ //TODO
         {
-            //ViePirate.Text = ((VuePirate)ListeNavire[0]).GetVie();
+            ViePirate.Text = ((VuePirate)ListeNavire[0]).GetVie();
 
         }
 

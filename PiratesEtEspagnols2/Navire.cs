@@ -7,8 +7,8 @@ namespace PiratesEtEspagnols
     public abstract class Navire
     {
         public static List<Navire> ListeNavires = new List<Navire>();
-        
-        public Canon _canon = new Canon(10, 20, 20); //*JUSTE POUR COMPILER
+
+        public Canon _canon = null;
         protected int CanonsCote { get; set; }
         protected int MembresInitial { get; set; }
         protected int MembresRestant { get; set; }

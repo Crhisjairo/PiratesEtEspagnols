@@ -33,6 +33,9 @@
             <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,30">
                 <Button Width="130" Height="50" FontSize="25" Click="ButtonMagasin_OnClick">Magasin</Button>
             </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,100">
+                <TextBlock x:Name="ViePirate" Foreground="AliceBlue"  FontSize="30" FontWeight="Bold">'Test Pirate'</TextBlock>
+            </StackPanel>
 
         </Grid>
 
