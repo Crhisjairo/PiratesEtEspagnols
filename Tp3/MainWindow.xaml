@@ -17,9 +17,13 @@
 
         <!--Premier Grid-->
         <Grid Grid.Column="0">
-            <Canvas x:Name="Surface" Grid.Column="0" />
+
+            <Image Source="images/Niveaux/BackgroundNiveau1.png" Margin="0,-1214,0,-18" Name="NiveauBackground" ></Image>
+            <Canvas x:Name="Surface" Grid.Column="0" >
+                
+            </Canvas>
+
         </Grid>
-        
 
         <!--Deuxième Grid, le HUD-->
         <Grid Grid.Column="1">
@@ -42,6 +46,6 @@
         </Grid>
 
     </Grid>
-    
-    
+
+
 </Window>

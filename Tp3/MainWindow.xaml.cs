@@ -27,25 +27,58 @@ namespace Tp3
         
         private static DispatcherTimer _horloge = new DispatcherTimer();
 
+        /// <summary>
+        /// Compteur de l'animation de présentation (Mouvement du background et message du niveau).
+        /// </summary>
+        private int compteurAnimation = 0;
+
         public MainWindow()
         {
             //Creer et placer les UserControl
             InitializeComponent();
-
+            
             //Préparation de logique (modèle).
             _jeu.PreparerJeu();
 
             //Préparation des vues (vues).
             CreerVueDesNavires();
 
-            //Horloges*
+            //Horloge*
             CreerHorlogeMouvement();
+
 
             //Méthodes Debug//
             VerifierCorrespondanceDeCles();
         }
 
-        
+        private void CreerHorlogeMouvement()
+        {
+            _horloge.Interval = TimeSpan.FromMilliseconds(100);
+            _horloge.IsEnabled = true;
+            //Méthodes à executer à chaque tick
+            _horloge.Tick += HorlogeAvanceAnimation; //d'abord, on ajoute l'animation pour la présentation
+            _horloge.Tick += VerifierAnimationFinit; //Verification si l'animation est finit.
+
+            DemarrerHorlogePrincipal();
+        }
+
+        private void HorlogeAvanceAnimation(object sender, EventArgs e)
+        {
+            //Changement de margin de l'images pour avoir l'impression qu'elle bouge.
+            NiveauBackground.Margin = new Thickness(0, -1214, 0, -18 - compteurAnimation * 30);
+            compteurAnimation ++;
+        }
+
+        private void VerifierAnimationFinit(object sender, EventArgs e)
+        {
+            if (compteurAnimation > 20) //si le
+            {
+                _horloge.Tick -= HorlogeAvanceAnimation; //supression de la méthode qu'animation.
+                _horloge.Tick -= VerifierAnimationFinit;
+                _horloge.Tick += HorlogeAvanceJeu; //Ajout de la méthode qui roule le jeu.
+            }
+        }
+
 
         /// <summary>
         /// Methode pour incluire un navire dans le Jeu.
@@ -132,7 +165,7 @@ namespace Tp3
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HorlogeAvance(object sender, EventArgs e)
+        private void HorlogeAvanceJeu(object sender, EventArgs e)
         {
 
             for (int i = 0; i < _dicVueNavires.Count; i++)
@@ -271,15 +304,7 @@ namespace Tp3
         }
 
 
-        private void CreerHorlogeMouvement()
-        {
-            _horloge.Interval = TimeSpan.FromMilliseconds(300);
-            _horloge.IsEnabled = true;
-            //Méthodes à executer à chaque tick
-            _horloge.Tick += HorlogeAvance;
-
-            DemarrerHorlogePrincipal();
-        }
+        
 
 
         /// <summary>
