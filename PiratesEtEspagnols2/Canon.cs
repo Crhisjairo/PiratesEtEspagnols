@@ -12,7 +12,7 @@
             Puissance = puissance;
             TempsRecharge = tempsRecharge;
             ChamDeTire = champDeTire;
-            DernierTir = -2;
+            DernierTir = -10;
         }
     }
 }
