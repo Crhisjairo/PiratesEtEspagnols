@@ -34,7 +34,7 @@ namespace Tp3
         /// <summary>
         /// Defire vers quelle direction le navire doit se deplacer.
         /// </summary>
-        /// <param name="direction">Reçoit le blutton clique par l'utilisateur</param>
+        /// <param name="direction">Reçoit le button clique par l'utilisateur</param>
         public void ChoisirMouvementNavirePirate(Buttons direction)
         {
             switch (direction)
@@ -145,6 +145,7 @@ namespace Tp3
         {
             ChangementPositionY = 0;
             ChangementPositionX = 0;
+
         }
 
         /// <summary>
@@ -194,9 +195,16 @@ namespace Tp3
         /// <returns>string avec la quantité de vie (membres)</returns>
         public string GetVie()
         {
-            string textVie = "Vie Pirate : ";
+            string textVie = "Vie : ";
             int vie = (_modelePirate).DonnerQuantiteMembresRestants();
             return textVie + vie.ToString();
+        }
+
+        public string GetBiens()
+        {
+            string textBiens = GetVie();
+            textBiens += ((ModelePirate)_modelePirate).GetBiens();
+            return textBiens;
         }
 
         /// <summary>

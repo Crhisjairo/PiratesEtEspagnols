@@ -188,7 +188,6 @@ namespace Tp3
             VerifierAttaques();
         }
 
-
         /// <summary>
         /// Recevoir la comande de direction pour le navire pirate.
         /// </summary>
@@ -328,11 +327,15 @@ namespace Tp3
             {
                 if (!navireEnime.EstMort() && !_vuePirate.EstMort())
                 {
-                    //verifier s'il subit attaque
+                    
                     Attaquer(navireEnime, _vuePirate);
-
-                    //verifier s'il attaque le pirate
                     Attaquer(_vuePirate, navireEnime);
+                    
+                    //si Galeon, il a un attaque extra (arrier)
+                    if (navireEnime is VueGalion)
+                    {
+                        AttaquerArrier(navireEnime, _vuePirate);
+                    }
                 }
             }
         }
@@ -371,22 +374,38 @@ namespace Tp3
             }
         }
 
+
+        /// <summary>
+        /// Verifie se l'ataque du navire qui attaque fait quelque dommage dans un navire enimie.
+        /// </summary>
+        /// <param name="navireAttaque">Navire que est en train d'attaquer</param>
+        /// <param name="navireDefense">Navire enimie attaquée</param>
+        private void AttaquerArrier(IVueNavire navireAttaque, IVueNavire navireDefense)
+        {
+            Dictionary<string, double> positionTir = ((VueGalion)navireAttaque).GetChampDeTirArrier();
+            Dictionary<string, double> positionNavireDefense = navireDefense.GetPositionReelNavire();
+
+            if (VerifierEstEnColision(positionTir, positionNavireDefense))
+            {
+                navireDefense.SubirAttaque(((VueGalion)navireAttaque).GetForceAttaqueArrier());
+            }
+        }
+
         /// <summary>
         /// Afficher Vie de chaque navire dans le pier
         /// </summary>
         private void AfficherVie()
         {
-            string text = "Vie : \n";
-
-            text += _vuePirate.GetVie() + "\n";
+            string textEnnemie = "Vie Ennemies: \n";
 
             for (int i = 0; i < _jeu.GetNombreNavires(); i++)
             {
-                text += _dicVueNavires[i].GetVie() + "\n";
+                textEnnemie += _dicVueNavires[i].GetVie() + "\n";
             }
 
-            VieNavire.Text = text;
+            VieEnnemie.Text = textEnnemie;
 
+            ViePirate.Text = "Pirate: \n" + _vuePirate.GetBiens();
         }
 
         /// <summary>
@@ -398,7 +417,7 @@ namespace Tp3
 
             if (_vuePirate.EstMort())
             {
-                //activer button nextLevel
+                //activer button RECOMENCER
                 return;
             }
             
@@ -411,6 +430,9 @@ namespace Tp3
             }
             //activer button nextLevel
         }
+
+
+
 
 
 
