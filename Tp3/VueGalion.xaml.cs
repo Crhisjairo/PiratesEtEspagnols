@@ -181,7 +181,7 @@ namespace Tp3
         public Dictionary<string, double> GetChampDeTir()
         {
             Dictionary<string, double> dictPositionTir = new Dictionary<string, double>();
-            int champDeTir = _modeleGalion._canon.ChamDeTire;
+            int champDeTir = _modeleGalion.Canon.ChamDeTire;
 
             double gauche = Canvas.GetLeft(this);
             dictPositionTir.Add("gauche", (gauche - (double)champDeTir));
@@ -203,7 +203,7 @@ namespace Tp3
         public Dictionary<string, double> GetChampDeTirArrier()
         {
             Dictionary<string, double> dictPositionTir = new Dictionary<string, double>();
-            int champDeTir = _modeleGalion._canon.ChamDeTire;
+            int champDeTir = _modeleGalion.Canon.ChamDeTire;
 
             double gauche = Canvas.GetLeft(this);
             dictPositionTir.Add("gauche", gauche);

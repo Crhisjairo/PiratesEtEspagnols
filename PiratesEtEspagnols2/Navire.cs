@@ -11,7 +11,7 @@ namespace PiratesEtEspagnols
         protected int CanonsCote { get; set; }
         protected int MembresInitial { get; set; }
         protected int MembresRestant { get; set; }
-        public Canon _canon = null;
+        public Canon Canon = null;
         protected int QuantiteOr { get; set; }
         protected int QuantiteArmes { get; set; }
 
@@ -29,12 +29,12 @@ namespace PiratesEtEspagnols
         {
             double attaque = 0;
             double efficience = (double)MembresInitial / MembresRestant;
-            int tempsRecharche = tick - _canon.DernierTir;
+            int tempsRecharche = tick - Canon.DernierTir;
 
-            if (_canon.TempsRecharge <= tempsRecharche)
+            if (Canon.TempsRecharge <= tempsRecharche)
             {
-                _canon.DernierTir = tick;
-                attaque = _canon.Puissance * CanonsCote * efficience;
+                Canon.DernierTir = tick;
+                attaque = Canon.Puissance * CanonsCote * efficience;
             }
 
             if (EstHorsCombat)

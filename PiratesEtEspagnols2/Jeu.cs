@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using PiratesEtEspagnols2;
+﻿using System.Collections.Generic;
 
 namespace PiratesEtEspagnols
 {
     public class Jeu
     {
         private const int Max_galions = 1;
-        private const int Max_escortes = 2;
+        private const int Max_escortes = 5;
         private const int Max_pirate = 1;
 
         private Dictionary<int, Navire> _dicModeleNavires = new Dictionary<int, Navire>();
-        private ModelePirate _pirate;
-        
+        private ModelePirate _pirate = new ModelePirate();
+
         static void Main(string[] args)
         {
 
@@ -53,8 +49,8 @@ namespace PiratesEtEspagnols
                 _dicModeleNavires.Add(cle, new ModeleEscorte());
             }
 
-            //Créer pirate.
-            _pirate = new ModelePirate();
+            //Le pirate est déjà crée.
+            
         }
 
         /// <summary>
@@ -65,11 +61,6 @@ namespace PiratesEtEspagnols
         {
             return _dicModeleNavires.Count;
         }
-
-
-
-
-
 
         /// <summary>
         /// Permet de recuperer le pirate pour utiliser ses propriétés.

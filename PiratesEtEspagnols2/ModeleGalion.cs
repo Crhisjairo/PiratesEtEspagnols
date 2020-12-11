@@ -16,7 +16,7 @@ namespace PiratesEtEspagnols
             CanonsArrier = 2; 
             MembresInitial = 200;
             MembresRestant = MembresInitial;
-            _canon = new Canon(0.3, 15, 20);
+            Canon = new Canon(0.3, 15, 20);
             DeterminerQuantiteOr();
         }
 
@@ -52,12 +52,12 @@ namespace PiratesEtEspagnols
         {
             int attaque = 0;
             double efficience = (double)MembresInitial / MembresRestant;
-            int tempsRecharche = tick - _canon.DernierTir;
+            int tempsRecharche = tick - Canon.DernierTir;
 
-            if (_canon.TempsRecharge <= tempsRecharche)
+            if (Canon.TempsRecharge <= tempsRecharche)
             {
-                _canon.DernierTir = tick;
-                attaque = (int)(_canon.Puissance * CanonsArrier * efficience);
+                Canon.DernierTir = tick;
+                attaque = (int)(Canon.Puissance * CanonsArrier * efficience);
             }
 
             if (EstHorsCombat)

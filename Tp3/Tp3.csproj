@@ -89,7 +89,6 @@
     <Compile Include="FenetreMagasin.xaml.cs">
       <DependentUpon>FenetreMagasin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HorlogeAnimation.cs" />
     <Compile Include="IVueNavire.cs" />
     <Compile Include="MenuPrincipal.xaml.cs">
       <DependentUpon>MenuPrincipal.xaml</DependentUpon>
@@ -237,9 +236,11 @@
   <ItemGroup>
     <Resource Include="images\OceanBackground.gif" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="images\Niveaux\BackgroundNiveau1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Magasin\SacMonnaie.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

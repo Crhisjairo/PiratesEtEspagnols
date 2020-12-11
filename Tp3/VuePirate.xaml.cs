@@ -165,7 +165,7 @@ namespace Tp3
         public Dictionary<string, double> GetChampDeTir()
         {
             Dictionary<string, double> dictPositionTir = new Dictionary<string, double>();
-            int champDeTir = _modelePirate._canon.ChamDeTire;
+            int champDeTir = _modelePirate.Canon.ChamDeTire;
 
             double gauche = Canvas.GetLeft(this);
             dictPositionTir.Add("gauche", (gauche - (double)champDeTir));

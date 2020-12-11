@@ -34,37 +34,46 @@
             <RowDefinition Height="177*"></RowDefinition>
             <RowDefinition Height="184*"/>
         </Grid.RowDefinitions>
+        
+        <!--Or du pirate-->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10, 0, 20, 0">
+            <Image Source="images/Magasin/SacMonnaie.png" Width="100"></Image>
+                <TextBlock Text="??? $" FontSize="30" Height="40" Name="OrDisponible"></TextBlock>
+            </StackPanel>
+       
+        
 
         <Image Grid.Row="0" Grid.Column="1" Source="images/Magasin/MagasinTitre.png" VerticalAlignment="Top" Margin="34,10,33,0" Height="105"/>
 
         <!--ARTICLE 1-->
         <!--Cadre d'achat d'un article, Vie-->
-        <StackPanel Grid.Row="1" Grid.Column="0">
+        <StackPanel Grid.Row="1" Grid.Column="0" >
             <!--En-tête-->
             <!--NOM DE L'ARTICLE-->
             <Label Style="{StaticResource TitreArticle}">
                 <Underline>Vie</Underline>
-
             </Label>
+
             <!--Ensemble du logo et du niveau de l'article-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Source="images/Icones/Navires/PirateLogoEtat1.png" Height="70"/>
                 <StackPanel Orientation="Vertical" Height="52">
 
-                    <Label FontSize="15" Content="Niveau"/>
+                    <Label FontSize="15" Content="Fois achetés"/>
 
-                    <TextBlock FontSize="15" x:Name="TextBlockNiveauVie" HorizontalAlignment="Center"><Bold>0</Bold></TextBlock>
+                    <TextBlock FontSize="15" x:Name="FoisAchetesVie" HorizontalAlignment="Center" Text="0"></TextBlock>
 
                 </StackPanel>
 
             </StackPanel>
-            <!--Prix de l'article-->
+                <!--Prix de l'article-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Source="images/Icones/MonnaieOr.png" Width="20" Margin="0, 0, 10, 0"></Image>
-                <TextBlock x:Name="TextBlockPrixVie" FontSize="30"><Bold>120</Bold></TextBlock>
+                <TextBlock x:Name="TextBlockPrixVie" FontSize="30" Text="120"><Bold></Bold></TextBlock>
             </StackPanel>
+
             <!--Button pour acheter-->
-            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonMagasin}">Adquérir</Button>
+            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonMagasin}" Click="Acheter_OnClick" Name="BtAdquerirVie">Adquérir</Button>
         </StackPanel>
 
         <!--ARTICLE 2-->
@@ -81,9 +90,9 @@
                 <Image Source="images/Magasin/Articles/DegatLogo.png" Height="70"/>
                 <StackPanel Orientation="Vertical" Height="52">
 
-                    <Label FontSize="15" Content="Niveau"/>
+                    <Label FontSize="15" Content="Fois achetés"/>
 
-                    <TextBlock FontSize="15" x:Name="TextBlockNiveauPuissance" HorizontalAlignment="Center"><Bold>0</Bold></TextBlock>
+                    <TextBlock FontSize="15" x:Name="FoisAchetesDegats" HorizontalAlignment="Center" Text="0"></TextBlock>
 
                 </StackPanel>
 
@@ -91,10 +100,10 @@
             <!--Prix de l'article-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Source="images/Icones/MonnaieOr.png" Width="20" Margin="0, 0, 10, 0"></Image>
-                <TextBlock x:Name="TextBlockPrixPuissance" FontSize="30"><Bold>200</Bold></TextBlock>
+                <TextBlock x:Name="TextBlockPrixDegats" FontSize="30" Text="200"><Bold></Bold></TextBlock>
             </StackPanel>
             <!--Button pour acheter-->
-            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonMagasin}">Adquérir</Button>
+            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonMagasin}" Click="Acheter_OnClick" Name="BtAdquerirDegats">Adquérir</Button>
         </StackPanel>
 
         <!--ARTICLE 3-->
@@ -111,9 +120,9 @@
                 <Image Source="images/Magasin/Articles/CannonLogo.png" Height="70"/>
                 <StackPanel Orientation="Vertical" Height="52">
 
-                    <Label FontSize="15" Content="Niveau"/>
+                    <Label FontSize="15" Content="Fois achetés"/>
 
-                    <TextBlock FontSize="15" x:Name="TextBlockNiveauCannons" HorizontalAlignment="Center"><Bold>0</Bold></TextBlock>
+                    <TextBlock FontSize="15" x:Name="FoisAchetesCannons" HorizontalAlignment="Center" Text="0"><Bold></Bold></TextBlock>
 
                 </StackPanel>
 
@@ -121,10 +130,10 @@
             <!--Prix de l'article-->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Source="images/Icones/MonnaieOr.png" Width="20" Margin="0, 0, 10, 0"></Image>
-                <TextBlock x:Name="TextBlockPrixCannons" FontSize="30"><Bold>230</Bold></TextBlock>
+                <TextBlock x:Name="TextBlockPrixCannons" FontSize="30" Text="230"><Bold></Bold></TextBlock>
             </StackPanel>
             <!--Button pour acheter-->
-            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonMagasin}">Adquérir</Button>
+            <Button Grid.Row="1" Grid.Column="0" Style="{StaticResource ButtonMagasin}" Click="Acheter_OnClick" Name="BtAdquerirCannons">Adquérir</Button>
         </StackPanel>
 
     </Grid>

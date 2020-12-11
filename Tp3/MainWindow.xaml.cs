@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Threading;
 using PiratesEtEspagnols;
@@ -51,6 +50,7 @@ namespace Tp3
         {
             _horloge.Interval = TimeSpan.FromMilliseconds(100);
             _horloge.IsEnabled = true;
+
             //Méthodes à executer à chaque tick
             _horloge.Tick += HorlogeAvanceAnimationPresentation; //d'abord, on ajoute l'animation pour la présentation
             _horloge.Tick += VerifierAnimationFinit; //Verification si l'animation est finit.
@@ -67,15 +67,22 @@ namespace Tp3
 
         private void VerifierAnimationFinit(object sender, EventArgs e)
         {
-            if (_compteurAnimationPresentation > 20) //si le
+            if (_compteurAnimationPresentation > 20) //si le compteur est arrivé à un point
             {
-                _horloge.Tick -= HorlogeAvanceAnimationPresentation; //supression de la méthode qu'animation.
-                _horloge.Tick -= VerifierAnimationFinit;
+                _horloge.Tick -= HorlogeAvanceAnimationPresentation; //supression de la méthode animation.
+                _horloge.Tick -= VerifierAnimationFinit; //suppression de la méthode de verification parce qu'il y a rien à vérifier
 
                 _horloge.Tick += HorlogeAvanceJeu; //Ajout de la méthode qui roule le jeu.
                 _horloge.Tick += HorlogeAvanceAnimationBackground; //Ajout de la méthode qui déplace le background.
+                _horloge.Tick += HorlogeAvanceAffichageProprietes;
             }
         }
+
+        private void HorlogeAvanceAffichageProprietes(object sender, EventArgs e)
+        {
+            
+        }
+
 
         private void HorlogeAvanceAnimationBackground(object sender, EventArgs e)
         {
@@ -90,7 +97,7 @@ namespace Tp3
                 _horloge.Tick -= HorlogeAvanceAnimationBackground;
             }
 
-            txtListeVueNavires.Text = _compteurAnimationBackground.ToString();
+            //txtListeVueNavires.Text = _compteurAnimationBackground.ToString();
             
 
             _compteurAnimationBackground++;
@@ -183,7 +190,9 @@ namespace Tp3
         {
             JeuContinue();
             AfficherVie();
+
             _vuePirate.TickHorloge++;
+
             MouvementerNavires();
             VerifierAttaques();
         }
@@ -455,6 +464,8 @@ namespace Tp3
         private void ButtonMagasin_OnClick(object sender, RoutedEventArgs e)
         {
             ArreterHorlogePrincipal();
+            fenetreMagasin.VerifierPossibiliteAchat();
+
             fenetreMagasin.Show();
 
         }

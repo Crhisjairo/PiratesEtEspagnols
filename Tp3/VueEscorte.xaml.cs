@@ -183,7 +183,7 @@ namespace Tp3
         public Dictionary<string, double> GetChampDeTir()
         {
             Dictionary<string, double> dictPositionTir = new Dictionary<string, double>();
-            int champDeTir = _modeleEscorte._canon.ChamDeTire;
+            int champDeTir = _modeleEscorte.Canon.ChamDeTire;
 
             double gauche = Canvas.GetLeft(this);
             dictPositionTir.Add("gauche", (gauche - (double)champDeTir));
@@ -236,13 +236,6 @@ namespace Tp3
             return _modeleEscorte.EstHorsCombat;
         }
 
-
-
-
-
-
-
-
         /// <summary>
         /// Donne une image d'escorte aléatoirement.
         /// Il existe 3 types de navires escorte: Cheval, Croix et Epee.
@@ -262,7 +255,6 @@ namespace Tp3
                     break;
             }
         }
-
 
         /// <summary>
         /// Change l'état du navire Escorte selon son type.
