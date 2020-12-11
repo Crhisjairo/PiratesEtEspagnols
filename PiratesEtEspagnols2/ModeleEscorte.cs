@@ -15,7 +15,7 @@ namespace PiratesEtEspagnols
             CanonsCote = 16;
             MembresInitial = 100;
             MembresRestant = MembresInitial;
-            _canon = new Canon(0.3, 6, 15);
+            _canon = new Canon(0.3, 10, 15);
             DeterminerQuantiteArmes();
         }
 

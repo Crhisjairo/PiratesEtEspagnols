@@ -43,7 +43,8 @@
                 <Button Width="130" Height="50" FontSize="25" Click="ButtonMagasin_OnClick">Magasin</Button>
             </StackPanel>
             <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,100">
-                <TextBlock x:Name="VieNavire" Foreground="WhiteSmoke"  FontFamily="Verdana" FontSize="15" FontWeight="Bold" Margin="40,0,0,20"></TextBlock>
+                <TextBlock x:Name="ViePirate" Foreground="WhiteSmoke"  FontFamily="Verdana" FontSize="15" FontWeight="Bold" Margin="40,0,0,20"></TextBlock>
+                <TextBlock x:Name="VieEnnemie" Foreground="WhiteSmoke"  FontFamily="Verdana" FontSize="15" FontWeight="Bold" Margin="40,0,0,20"></TextBlock>
             </StackPanel>
 
         </Grid>

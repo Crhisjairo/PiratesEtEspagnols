@@ -24,6 +24,7 @@ namespace Tp3
         private double NextX { get; set; }
         private Random _random = new Random();
         private int DommageAttaque { get; set; }
+        private int DommageAttaqueExtra { get; set; }
 
         public VueGalion(Navire modeleGalion)
         {
@@ -69,9 +70,9 @@ namespace Tp3
                 else
                 {
                     DommageAttaque = Tirer();
+                    DommageAttaqueExtra = ((ModeleGalion)_modeleGalion).TirerArrier(TickHorloge);
                 }
             }
-
 
         }
 
@@ -196,12 +197,43 @@ namespace Tp3
         }
 
         /// <summary>
+        /// Ajoute le champ de tir à la position du navire pour savoir jusqu'à quel position le tir va affecter. 
+        /// </summary>
+        /// <returns>dictionaire avec tout le champ de tir</returns>
+        public Dictionary<string, double> GetChampDeTirArrier()
+        {
+            Dictionary<string, double> dictPositionTir = new Dictionary<string, double>();
+            int champDeTir = _modeleGalion._canon.ChamDeTire;
+
+            double gauche = Canvas.GetLeft(this);
+            dictPositionTir.Add("gauche", gauche);
+            double droit = gauche + ActualWidth;
+            dictPositionTir.Add("droit", droit);
+
+            double haut = Canvas.GetTop(this);
+            dictPositionTir.Add("haut", (haut - (double)champDeTir));
+            double bas = haut + ActualHeight;
+            dictPositionTir.Add("bas", bas);
+
+            return dictPositionTir;
+        }
+
+        /// <summary>
         /// Methode pour recuperer la force du attaque.
         /// </summary>
         /// <returns>La force du attaque</returns>
         internal int GetForceAttaque()
         {
             return DommageAttaque;
+        }
+
+        /// <summary>
+        /// Methode pour recuperer la force du attaque par l'arrier.
+        /// </summary>
+        /// <returns>La force du attaque</returns>
+        internal int GetForceAttaqueArrier()
+        {
+            return DommageAttaqueExtra;
         }
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace PiratesEtEspagnols
             CanonsArrier = 2; 
             MembresInitial = 200;
             MembresRestant = MembresInitial;
-            _canon = new Canon(0.3, 10, 20);
+            _canon = new Canon(0.3, 15, 20);
             DeterminerQuantiteOr();
         }
 
@@ -40,6 +40,32 @@ namespace PiratesEtEspagnols
 
             QuantiteOr = 0;
             MembresRestant = 0;
+        }
+
+        /// <summary>
+        /// Donne le attaque par l'arrier que le navire peut faire d'accord avec l'efficience de l'equipage, la cantité de cannons et la puissance du canon.
+        /// Si jamais le temps de recharge dès le dernier tir n'est pas respecté la methode retourne uun ataque de ZERO.
+        /// </summary>
+        /// <param name="tick">Moment du jeux dont le navire essaye de tirer avec ses canons d'arrier</param>
+        /// <returns></returns>
+        public int TirerArrier(int tick)
+        {
+            int attaque = 0;
+            double efficience = (double)MembresInitial / MembresRestant;
+            int tempsRecharche = tick - _canon.DernierTir;
+
+            if (_canon.TempsRecharge <= tempsRecharche)
+            {
+                _canon.DernierTir = tick;
+                attaque = (int)(_canon.Puissance * CanonsArrier * efficience);
+            }
+
+            if (EstHorsCombat)
+            {
+                attaque = 0;
+            }
+
+            return attaque;
         }
 
     }

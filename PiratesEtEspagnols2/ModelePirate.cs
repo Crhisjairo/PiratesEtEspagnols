@@ -14,7 +14,7 @@ namespace PiratesEtEspagnols
             CanonsCote = 5;
             MembresInitial = 80;
             MembresRestant = MembresInitial;
-            _canon = new Canon(1.5, 2, 10);
+            _canon = new Canon(1.5, 5, 10);
             QuantiteOr = 0; 
         }
 
@@ -67,6 +67,15 @@ namespace PiratesEtEspagnols
             QuantiteArmes += quantiteVole;
         }
 
+        public string GetBiens()
+        {
+            string text = "\n- Armes : ";
+            text += QuantiteArmes.ToString();
+            text += "\n- Or : ";
+            text += QuantiteOr.ToString();
+
+            return text;
+        }
 
     }
 }

@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="60">
     <Grid>
-        <Image Source="images/Navires/Escortes/Escorte1Etat1.png" Name="ImageEscorte" Height="100"/>
+        <Image Source="images/Navires/Escortes/Escorte1Etat1.png" Name="ImageEscorte" Height="100" Width="60"/>
     </Grid>
 </UserControl>
