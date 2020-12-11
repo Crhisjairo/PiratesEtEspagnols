@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="90">
     <Grid>
-        <Image Source="images/Navires/Galion/GalionEtat1.png" Name="ImageGalion" Height="150"/>
+        <Border BorderThickness="3" BorderBrush="Black">
+           <Image Source="images/Navires/Galion/GalionEtat1.png" Name="ImageGalion" Height="150"/>
+        </Border>
     </Grid>
 </UserControl>

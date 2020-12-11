@@ -9,17 +9,12 @@ namespace PiratesEtEspagnols
     public class Jeu
     {
         private const int Max_galions = 1;
-        private const int Max_escortes = 6;
+        private const int Max_escortes = 2;
         private const int Max_pirate = 1;
 
-        //public List<Navire> ListeNavires { get; set; } = new List<Navire>();
         private Dictionary<int, Navire> _dicModeleNavires = new Dictionary<int, Navire>();
-
-        //EST-CE QUE TU A BESOIN DE CES TROIS ITEMS?
         private ModelePirate _pirate;
         
-
-
         static void Main(string[] args)
         {
 
@@ -60,45 +55,21 @@ namespace PiratesEtEspagnols
 
             //Créer pirate.
             _pirate = new ModelePirate();
-
-            ////Créer pirates*** à partir de la fin de la clé precedente.
-            ////***Il doit avoir seulement un pirate pour ce jeu.
-            //for (int i = 0; i < Max_pirate; i++)
-            //{
-            //    _dicModeleNavires.Add(cle, new ModelePirate());
-            //}
-
-
         }
 
         /// <summary>
-        /// Utilisé pour créer les vues des navires.
+        /// Utilisé returner la quantité d'enimeis crées.
         /// </summary>
-        /// <returns>Nombre de navires créées</returns>
+        /// <returns>Nombre de navires créés</returns>
         public int GetNombreNavires()
         {
             return _dicModeleNavires.Count;
         }
 
-        //public void AddListeNavires(int typeNavire)
-        //{
-        //    if (typeNavire == 1)
-        //    {
-        //        Navire pirate = new ModelePirate();
-        //        ListeNavires.Add(pirate);
-        //    }
-        //    else if (typeNavire == 2)
-        //    {
-        //        Navire galion = new ModeleGalion();
-        //        ListeNavires.Add(galion);
-        //    }
-        //    else if (typeNavire == 3)
-        //    {
-        //        Navire escorte = new ModeleEscorte();
-        //        ListeNavires.Add(escorte);
-        //    }
 
-        //}
+
+
+
 
         /// <summary>
         /// Permet de recuperer le pirate pour utiliser ses propriétés.

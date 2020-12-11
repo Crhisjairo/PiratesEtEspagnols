@@ -15,23 +15,18 @@ namespace Tp3
     public partial class MainWindow : Window
     {
         private static Jeu _jeu = new Jeu();
-
         private static FenetreMagasin fenetreMagasin = new FenetreMagasin(_jeu.GetPirate());
-
-        //private List<IVueNavire> ListeVueNavire { get; set; } = new List<IVueNavire>();
 
         private Dictionary<int, IVueNavire> _dicVueNavires = new Dictionary<int, IVueNavire>();
         private VuePirate _vuePirate;
+        private int AttaquePirate { get; set; }
 
-        private List<int> ListAttaques { get; set; } = new List<int>();
-        
         private static DispatcherTimer _horloge = new DispatcherTimer();
 
         /// <summary>
         /// Compteur de l'animation de présentation (Mouvement du background et message du niveau).
         /// </summary>
         private int _compteurAnimationPresentation = 0;
-
         private int _compteurAnimationBackground = 0;
 
         public MainWindow()
@@ -42,12 +37,11 @@ namespace Tp3
             //Préparation de logique (modèle).
             _jeu.PreparerJeu();
 
-            //Préparation des vues (vues).
+            //Préparation des Navires (vues).
             CreerVueDesNavires();
 
             //Horloge*
             CreerHorlogeMouvement();
-
 
             //Méthodes Debug//
             VerifierCorrespondanceDeCles();
@@ -106,9 +100,6 @@ namespace Tp3
         /// <summary>
         /// Methode pour incluire un navire dans le Jeu.
         /// </summary>
-        /// <param name="left">l'emplacement "x" du navire</param>
-        /// <param name="top">l'emplacement "y"du navire</param>
-        /// <param name="type">si le navire est un Galion, un pirate ou un escorte</param>
         private void CreerVueDesNavires()
         {
             for (int i = 0; i < _jeu.GetNombreNavires(); i++)
@@ -117,27 +108,27 @@ namespace Tp3
                 if(_jeu.GetNavire(i) is ModeleGalion)
                 {
                     //Ajout au dicVue le pirate avec sa clé correspondant du modèle
-                    _dicVueNavires.Add(i, new VueGalion());
+                    _dicVueNavires.Add(i, new VueGalion(_jeu.GetNavire(i)));
 
                 } else if (_jeu.GetNavire(i) is ModeleEscorte)
                 {
                     //Ajout au dicVue le galion avec sa clé correspondant du modèle
-                    _dicVueNavires.Add(i, new VueEscorte());
+                    _dicVueNavires.Add(i, new VueEscorte(_jeu.GetNavire(i)));
 
                 } 
-                //else if (_jeu.GetNavire(i) is ModelePirate)
-                //{
-                //    //Ajout au dicVue le escorte avec sa clé correspondant du modèle
-                //    _dicVueNavires.Add(i, new VuePirate());
-                //}
+
             }
 
             //Création de la VuePirate - Il est forcement lié au modelePirate, car il est le seul.
-            _vuePirate = new VuePirate();
+            _vuePirate = new VuePirate(_jeu.GetPirate());
 
             AjouterNaviresAuCanvas();
 
         }
+
+        /// <summary>
+        /// Placer des navires dans le canvas de façon logique. Pirate au bas de l'écran et enmi au haut avec un distance entre eux.
+        /// </summary>
         private void AjouterNaviresAuCanvas()
         {
             //Car les position des escortes varient en fonction de la position initial
@@ -190,48 +181,13 @@ namespace Tp3
         /// <param name="e"></param>
         private void HorlogeAvanceJeu(object sender, EventArgs e)
         {
-
-            for (int i = 0; i < _dicVueNavires.Count; i++)
-            {
-                if (_dicVueNavires[i] is VueGalion)
-                {
-                    ((VueGalion) _dicVueNavires[i]).ReplacerNavire();
-                    ((VueGalion)_dicVueNavires[i]).TickHorloge++;
-
-                }
-                else if (_dicVueNavires[i] is VueEscorte)
-                {
-                    ((VueEscorte) _dicVueNavires[i]).ReplacerNavire();
-                    ((VueEscorte) _dicVueNavires[i]).TickHorloge++;
-                }
-                    //***À REVISER***///
-                    _vuePirate.TickHorloge++;
-
-                    _vuePirate.ValiderMouvement(Surface);
-                    EviterColision(_vuePirate);
-                    _vuePirate.MouvementerNavire();
-
-                    //***À VERIFIER***//
-                    //ListAttaques[i] = _vuePirate.Tirer();
-
-                    _dicVueNavires[i].ValiderMouvement(Surface);
-                    EviterColision(_dicVueNavires[i]);
-                    _dicVueNavires[i].MouvementerNavire();
-
-                    //***À VERIFIER***//
-                    //ListAttaques[i] = _dicVueNavires[i].Tirer();
-            }
-
-
-
-            //***À VERIFIER***//
-            for (int i = 0; i < _dicVueNavires.Count; i++)
-            {
-                //VerifierSubitAttaque(i);
-            }
-
+            JeuContinue();
             AfficherVie();
+            _vuePirate.TickHorloge++;
+            MouvementerNavires();
+            VerifierAttaques();
         }
+
 
         /// <summary>
         /// Recevoir la comande de direction pour le navire pirate.
@@ -240,56 +196,122 @@ namespace Tp3
         /// <param name="e">Type de button appuie</param>
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-                switch (e.Key)
-                    {
-                        case Key.Left:
-                            _vuePirate.ReplacerNavirePirate(Buttons.Gauche);
-                            break;
-                        case Key.Right:
-                            _vuePirate.ReplacerNavirePirate(Buttons.Droit);
-                            break;
-                        case Key.Up:
-                            _vuePirate.ReplacerNavirePirate(Buttons.Haut);
-                            break;
-                        case Key.Down:
-                            _vuePirate.ReplacerNavirePirate(Buttons.Bas);
-                            break;
-                        case Key.Space:
-                            break;
-                    }
+            AttaquePirate = 0;
             
+            switch (e.Key)
+            {
+                case Key.Left:
+                    _vuePirate.ChoisirMouvementNavirePirate(Buttons.Gauche);
+                    break;
+                case Key.Right:
+                    _vuePirate.ChoisirMouvementNavirePirate(Buttons.Droit);
+                    break;
+                case Key.Up:
+                    _vuePirate.ChoisirMouvementNavirePirate(Buttons.Haut);
+                    break;
+                case Key.Down:
+                    _vuePirate.ChoisirMouvementNavirePirate(Buttons.Bas);
+                    break;
+                case Key.Space:
+                    AttaquePirate = _vuePirate.Tirer();
+                    break;
+            }
         }
 
-        public void EviterColision(IVueNavire navireReference)
+        /// <summary>
+        /// Mouvementer chaque objet dans le canvas;
+        /// </summary>
+        private void MouvementerNavires()
         {
-            List<double> positionNavireReference = navireReference.PositionNavire();
-            List<double> positionNavireEvalue = null;
-
-            for (int i = 0; i < _dicVueNavires.Count; i++)
+            //Pour mouvementer le Pirate
+            if (!_vuePirate.EstMort())
             {
-                IVueNavire navireEvalue = _dicVueNavires[i];
+                _vuePirate.ValiderMouvement(Surface);
+                EviterColision(_vuePirate);
+                _vuePirate.MouvementerNavire();
+            }
 
-                if (!Object.ReferenceEquals(navireEvalue, navireReference))
+            //Pour mouvementer les enimies
+            foreach (IVueNavire navire in _dicVueNavires.Values)
+            {
+                if (navire.EstMort())
                 {
-                    positionNavireEvalue = navireEvalue.PositionNavire();
-
-                    if (VerifierColision(positionNavireReference, positionNavireEvalue))
+                    navire.BloquerMouvement();
+                }
+                else
+                {
+                    if (navire is VueGalion)
                     {
-                        navireReference.BloquerMouvement();
+                        ((VueGalion)navire).ChoisirMouvementNavire();
                     }
+                    else if (navire is VueEscorte)
+                    {
+                        ((VueEscorte)navire).ChoisirMouvementNavire();
+                    }
+
+                    navire.ValiderMouvement(Surface);
+                    EviterColision(navire);
+                    navire.MouvementerNavire();
                 }
             }
         }
 
-        private bool VerifierColision(List<double> positionReference, List<double> positionEvalue)
+        /// <summary>
+        /// La methode va bloquer des mouvements d'un navire s'il se colide avec autre des navires du canvas.
+        /// </summary>
+        /// <param name="navireReference">Le navire qu'essaye de se mouvementer</param>
+        public void EviterColision(IVueNavire navireReference)
+        {
+            Dictionary<string, double> positionNavireReference = navireReference.GetPositionPrevueNavire();
+            Dictionary<string, double> positionNavireEvalue = null;
+
+            for (int i = 0; i < _jeu.GetNombreNavires(); i++)
+            {
+                IVueNavire navireEvalue = _dicVueNavires[i];
+                if (!Object.ReferenceEquals(navireEvalue, navireReference))
+                {
+                    positionNavireEvalue = navireEvalue.GetPositionReelNavire();
+
+                    if (VerifierEstEnColision(positionNavireReference, positionNavireEvalue))
+                    {
+                        navireReference.BloquerMouvement();
+                        if (navireEvalue.EstMort() && navireReference is VuePirate)
+                        {
+                            _jeu.GetNavire(i).EtreEvahis(_jeu.GetPirate());
+                        }
+                    }
+                }
+
+            }
+
+            
+            if (!(navireReference is VuePirate))
+            {
+                positionNavireEvalue = _vuePirate.GetPositionReelNavire();
+
+                if (VerifierEstEnColision(positionNavireReference, positionNavireEvalue))
+                {
+                    navireReference.BloquerMouvement();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Verifier si le deux objets sont en train de se colidir dans le canvas.
+        /// </summary>
+        /// <param name="positionReference">La position du objet que se mouvement</param>
+        /// <param name="positionEvalue">La position du objet que la methode va verifier si l'objet en mouvement se colide avec</param>
+        /// <returns>boolean que di se le mouvement cause un colision ou il ne cause pas.</returns>
+        private bool VerifierEstEnColision(Dictionary<string, double> positionReference, Dictionary<string, double> positionEvalue)
         {
             bool estColision = false;
 
-            if ((positionReference[2] >= positionEvalue[2] && positionReference[2] <= positionEvalue[3]) ||
-                (positionReference[3] <= positionEvalue[3] && positionReference[3] >= positionEvalue[2]))
+
+            if ((positionReference["haut"] >= positionEvalue["haut"] && positionReference["haut"] <= positionEvalue["bas"]) ||
+                (positionReference["bas"] <= positionEvalue["bas"] && positionReference["bas"] >= positionEvalue["haut"]))
             {
-                if ((positionReference[0] >= positionEvalue[0] && positionReference[0] <= positionEvalue[1]) ||
-                    (positionReference[1] <= positionEvalue[1] && positionReference[1] >= positionEvalue[0]))
+                if ((positionReference["gauche"] >= positionEvalue["gauche"] && positionReference["gauche"] <= positionEvalue["droit"]) ||
+                    (positionReference["droit"] <= positionEvalue["droit"] && positionReference["droit"] >= positionEvalue["gauche"]))
                 {
                     estColision = true;
                 }
@@ -297,37 +319,99 @@ namespace Tp3
             return estColision;
         }
 
-        public void AfficherVie() /*CHANGER METHODE POUR AFFICER TOUS LES VIES*/ //TODO
+        /// <summary>
+        /// Verifier si les navires ont subit des attaques
+        /// </summary>
+        private void VerifierAttaques()
         {
-            //ViePirate.Text = ((VuePirate)ListeVueNavire[0]).GetVie();
-
-        }
-
-        //***À VERIFIER***///
-        public void VerifierSubitAttaque(int index)
-        {
-            List<double> positionNavireReference = _dicVueNavires[index].PositionTireNavire();
-
-            List<double> positionNavireEvalue = null;
-
-            for (int i = 0; i < _dicVueNavires.Count; i++)
+            foreach (IVueNavire navireEnime in _dicVueNavires.Values)
             {
-                IVueNavire navireEvalue = _dicVueNavires[i];
-
-                if (!Object.ReferenceEquals(navireEvalue, _dicVueNavires[index]))
+                if (!navireEnime.EstMort() && !_vuePirate.EstMort())
                 {
-                    positionNavireEvalue = navireEvalue.PositionNavire();
+                    //verifier s'il subit attaque
+                    Attaquer(navireEnime, _vuePirate);
 
-                    if (VerifierColision(positionNavireReference, positionNavireEvalue))
-                    {
-                        navireEvalue.SubirAttaque(ListAttaques[index], _dicVueNavires[index].GetTypeNavire().EstEnemiePirate);
-                    }
+                    //verifier s'il attaque le pirate
+                    Attaquer(_vuePirate, navireEnime);
                 }
             }
         }
 
+        /// <summary>
+        /// Verifie se l'ataque du navire qui attaque fait quelque dommage dans un navire enimie.
+        /// </summary>
+        /// <param name="navireAttaque">Navire que est en train d'attaquer</param>
+        /// <param name="navireDefense">Navire enimie attaquée</param>
+        private void Attaquer(IVueNavire navireAttaque, IVueNavire navireDefense)
+        {
+            Dictionary<string, double> positionTir = navireAttaque.GetChampDeTir();
+            Dictionary<string, double> positionNavireDefense = navireDefense.GetPositionReelNavire();
+            int dommage = 0;
 
-        
+            if (navireAttaque is VueEscorte)
+            {
+                dommage = ((VueEscorte)navireAttaque).GetForceAttaque();
+            }
+            else if (navireAttaque is VueGalion)
+            {
+                dommage = ((VueGalion)navireAttaque).GetForceAttaque();
+            }
+
+
+            if (VerifierEstEnColision(positionTir, positionNavireDefense))
+            {
+                if (navireAttaque is VuePirate)
+                {
+                    navireDefense.SubirAttaque(AttaquePirate);
+                }
+                else
+                {
+                    navireDefense.SubirAttaque(dommage);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Afficher Vie de chaque navire dans le pier
+        /// </summary>
+        private void AfficherVie()
+        {
+            string text = "Vie : \n";
+
+            text += _vuePirate.GetVie() + "\n";
+
+            for (int i = 0; i < _jeu.GetNombreNavires(); i++)
+            {
+                text += _dicVueNavires[i].GetVie() + "\n";
+            }
+
+            VieNavire.Text = text;
+
+        }
+
+        /// <summary>
+        /// Verifie si ^les pirates ont gagne ou perdu;
+        /// </summary>
+        /// <returns></returns>
+        private void JeuContinue()
+        {
+
+            if (_vuePirate.EstMort())
+            {
+                //activer button nextLevel
+                return;
+            }
+            
+            foreach (IVueNavire navire in _dicVueNavires.Values)
+            {
+                if (!navire.EstMort())
+                {
+                    return;
+                }
+            }
+            //activer button nextLevel
+        }
+
 
 
         /// <summary>
@@ -346,7 +430,6 @@ namespace Tp3
             _horloge.Start();
         }
         
-
         private void ButtonMagasin_OnClick(object sender, RoutedEventArgs e)
         {
             ArreterHorlogePrincipal();

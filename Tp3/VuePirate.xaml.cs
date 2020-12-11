@@ -11,43 +11,31 @@ namespace Tp3
     /// </summary>
     public partial class VuePirate : UserControl, IVueNavire
     {
-        private Navire _modelePirate = new ModelePirate();
+        private Navire _modelePirate = null;
 
         public static double PosInitX { get; } = 320;
         public static double PosInitY { get; } = 800;
 
         private const int Acceleration = 4;
-        internal int TickHorloge { set; get; } = 0;
+        public int TickHorloge { set; get; }
         private double ChangementPositionX { get; set; }
         private double ChangementPositionY { get; set; }
-
+        private double NextY { get; set; }
+        private double NextX { get; set; }
 
 
         // images/Navires/Pirate/PirateEtat1.png
-        public VuePirate()
+        public VuePirate(Navire modelePirate)
         {
             InitializeComponent();
-        }
-
-        public void ChangerEtat(EtatNavire etat)
-        {
-           //_modelePirate.ChangerEtat();
-
-            if (etat == EtatNavire.Neuf)
-                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat1.png"));
-            else if (etat == EtatNavire.peuDommage)
-                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat2.png"));
-            else if (etat == EtatNavire.TresDommage)
-                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat3.png"));
-            else if (etat == EtatNavire.Mort)
-                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat4.png"));
+            _modelePirate = (ModelePirate) modelePirate;
         }
 
         /// <summary>
         /// Defire vers quelle direction le navire doit se deplacer.
         /// </summary>
         /// <param name="direction">Reçoit le blutton clique par l'utilisateur</param>
-        public void ReplacerNavirePirate(Buttons direction)
+        public void ChoisirMouvementNavirePirate(Buttons direction)
         {
             switch (direction)
             {
@@ -63,20 +51,20 @@ namespace Tp3
                 case Buttons.Droit:
                     ChangementPositionX += Acceleration;
                     break;
+                default:
+                    break;
             }
+
         }
 
         /// <summary>
-        /// Fait le choix vers quelle direction le navire doit aller.
+        /// Calcule le dommage que le navire va aporter à ses enimies.
         /// </summary>
-        /// <param name="surface">La surface danns laquele le navire est placé</param>
-        public void MouvementerNavire()
+        /// <returns>Dommage causé par le navire</returns>
+        public int Tirer()
         {
-
-            Canvas.SetTop(this, Canvas.GetTop(this) + ChangementPositionY);
-            Canvas.SetLeft(this, Canvas.GetLeft(this) + ChangementPositionX);
-            ChangementPositionY = 0;
-            ChangementPositionX = 0;
+            double attaque = _modelePirate.Tirer(TickHorloge);
+            return (int)attaque;
         }
 
         /// <summary>
@@ -85,77 +73,125 @@ namespace Tp3
         /// <param name="surface"> C'est le canvas où tous les élements sont placées</param>
         public void ValiderMouvement(Canvas surface)
         {
-            double nextY = Canvas.GetTop(this) + ChangementPositionY;
-            double nextX = Canvas.GetLeft(this) + ChangementPositionX;
+            NextY = Canvas.GetTop(this) + ChangementPositionY;
+            NextX = Canvas.GetLeft(this) + ChangementPositionX;
 
-            if (nextY < 0)
+            if (NextY < 0)
             {
                 ChangementPositionY = 0;
             }
-            else if (nextY + ActualHeight > surface.ActualHeight)
+            else if (NextY + ActualHeight > surface.ActualHeight)
             {
-                ChangementPositionY = surface.ActualHeight - (nextY + ActualHeight);
+                ChangementPositionY = surface.ActualHeight - (NextY + ActualHeight);
             }
 
-            if (nextX < 0)
+            if (NextX < 0)
             {
                 ChangementPositionX = 0;
             }
-            else if (nextX + ActualWidth > surface.ActualWidth)
+            else if (NextX + ActualWidth > surface.ActualWidth)
             {
-                ChangementPositionX = surface.ActualWidth - (nextX + ActualWidth);
+                ChangementPositionX = surface.ActualWidth - (NextX + ActualWidth);
             }
-
         }
 
-        public List<double> PositionNavire()
+        /// <summary>
+        /// Permet savoir où le navire se trouve dans le canvas après le mouvement est fait.
+        /// </summary>
+        /// <returns>dictionaire avec les positions extremes ATTENDUES du navire : point plus à droite, point plus à gauche, point plus au haut et point plus au bas</returns>
+        public Dictionary<string, double> GetPositionPrevueNavire()
         {
-            List<double> ListePositionNavire = new List<double>();
-            
+            Dictionary<string, double> dictPositionNavire = new Dictionary<string, double>();
+
             double gauche = Canvas.GetLeft(this) + ChangementPositionX;
-            ListePositionNavire.Add(gauche);
+            dictPositionNavire.Add("gauche", gauche);
             double droit = gauche + ActualWidth;
-            ListePositionNavire.Add(droit);
+            dictPositionNavire.Add("droit", droit);
 
             double haut = Canvas.GetTop(this) + ChangementPositionY;
-            ListePositionNavire.Add(haut);
+            dictPositionNavire.Add("haut", haut);
             double bas = haut + ActualHeight;
-            ListePositionNavire.Add(bas);
-            
-            return ListePositionNavire;
+            dictPositionNavire.Add("bas", bas);
+
+            return dictPositionNavire;
         }
 
-        
-        public List<double> PositionTireNavire()
-        {
-            List<double> ListePositionNavire = new List<double>();
 
-            double gauche = Canvas.GetLeft(this); 
-            ListePositionNavire.Add(gauche - _modelePirate._canon.ChamDeTire);
+        /// <summary>
+        /// Permet savoir où le navire se trouve dans le canvas dans l'exact moment.
+        /// </summary>
+        /// <returns>dictionaire avec les positions extremes RÉELS du navire : point plus à droite, point plus à gauche, point plus au haut et point plus au bas</returns>
+        public Dictionary<string, double> GetPositionReelNavire()
+        {
+            Dictionary<string, double> dictPositionNavire = new Dictionary<string, double>();
+
+            double gauche = Canvas.GetLeft(this);
+            dictPositionNavire.Add("gauche", gauche);
             double droit = gauche + ActualWidth;
-            ListePositionNavire.Add(droit + _modelePirate._canon.ChamDeTire);
+            dictPositionNavire.Add("droit", droit);
 
             double haut = Canvas.GetTop(this);
-            ListePositionNavire.Add(haut);
+            dictPositionNavire.Add("haut", haut);
             double bas = haut + ActualHeight;
-            ListePositionNavire.Add(bas);
+            dictPositionNavire.Add("bas", bas);
 
-            return ListePositionNavire;
+            return dictPositionNavire;
         }
 
-
+        /// <summary>
+        /// Va faire de sorte que navire ne bouge pas parce qu'il change le deplacement vertical et horizontal à ZERO. 
+        /// </summary>
         public void BloquerMouvement()
         {
             ChangementPositionY = 0;
             ChangementPositionX = 0;
         }
 
-        public int Tirer()
+        /// <summary>
+        /// Sert à placer le navire dans le canvas.
+        /// </summary>
+        public void MouvementerNavire()
         {
-            double attaque = _modelePirate.Tirer(TickHorloge);
-            return (int) attaque;
+            Canvas.SetTop(this, Canvas.GetTop(this) + ChangementPositionY);
+            Canvas.SetLeft(this, Canvas.GetLeft(this) + ChangementPositionX);
+            BloquerMouvement();
         }
 
+        /// <summary>
+        /// Ajoute le champ de tir à la position du navire pour savoir jusqu'à quel position le tir va affecter. 
+        /// </summary>
+        /// <returns>dictionaire avec tout le champ de tir</returns>
+        public Dictionary<string, double> GetChampDeTir()
+        {
+            Dictionary<string, double> dictPositionTir = new Dictionary<string, double>();
+            int champDeTir = _modelePirate._canon.ChamDeTire;
+
+            double gauche = Canvas.GetLeft(this);
+            dictPositionTir.Add("gauche", (gauche - (double)champDeTir));
+            double droit = gauche + ActualWidth;
+            dictPositionTir.Add("droit", (droit + (double)champDeTir));
+
+            double haut = Canvas.GetTop(this);
+            dictPositionTir.Add("haut", haut);
+            double bas = haut + ActualHeight;
+            dictPositionTir.Add("bas", bas);
+
+            return dictPositionTir;
+        }
+
+        /// <summary>
+        /// Methode que retire de la vie du navire.
+        /// </summary>
+        /// <param name="forceAttaque">Le dommage que le navire va subir</param>
+        public void SubirAttaque(int forceAttaque)
+        {
+            _modelePirate.EtreAttaque(forceAttaque);
+        }
+
+        /// <summary>
+        /// Cherche la quantité de membres restants du navire.
+        /// </summary>
+        /// <returns>string avec la quantité de vie (membres)</returns>
         public string GetVie()
         {
             string textVie = "Vie Pirate : ";
@@ -163,17 +199,36 @@ namespace Tp3
             return textVie + vie.ToString();
         }
 
-        public Navire GetTypeNavire()
+        /// <summary>
+        /// Retourne si le navire est encore dans le jeu
+        /// </summary>
+        /// <returns></returns>
+        public bool EstMort()
         {
-            return _modelePirate;
+            return _modelePirate.EstHorsCombat;
         }
 
-        public void SubirAttaque(int forceAttaque, bool estEnemiePirate)
+
+
+
+
+
+
+
+
+
+        public void ChangerEtat(EtatNavire etat)
         {
-            if (estEnemiePirate != _modelePirate.EstEnemiePirate)
-            {
-                _modelePirate.EtreAttaque(forceAttaque);
-            }
+            //_modelePirate.ChangerEtat();
+
+            if (etat == EtatNavire.Neuf)
+                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat1.png"));
+            else if (etat == EtatNavire.peuDommage)
+                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat2.png"));
+            else if (etat == EtatNavire.TresDommage)
+                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat3.png"));
+            else if (etat == EtatNavire.Mort)
+                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat4.png"));
         }
     }
 }

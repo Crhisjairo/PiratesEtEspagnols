@@ -8,7 +8,6 @@ namespace PiratesEtEspagnols
     {
         
 
-        internal int CantiteOr { get; private set; }
         internal int CanonsArrier { get; set; }
 
         public ModeleGalion()
@@ -18,8 +17,29 @@ namespace PiratesEtEspagnols
             MembresInitial = 200;
             MembresRestant = MembresInitial;
             _canon = new Canon(0.3, 10, 20);
-            EstEnemiePirate = true;
-            CantiteOr = 0; //TODO
+            DeterminerQuantiteOr();
+        }
+
+        /// <summary>
+        /// Determiner au hasard combien d'or le galion possede.
+        /// </summary>
+        private void DeterminerQuantiteOr()
+        {
+            Random random = new Random();
+            QuantiteOr = random.Next(10, 500);
+        }
+
+        /// <summary>
+        /// Subir l'attaque final des pirates.
+        /// </summary>
+        /// <param name="pirate">Le navire qui attaque</param>
+        public override void EtreEvahis(ModelePirate pirate)
+        {
+            pirate.VolerOr(QuantiteOr);
+            pirate.VolerMembres(MembresRestant);
+
+            QuantiteOr = 0;
+            MembresRestant = 0;
         }
 
     }
