@@ -14,10 +14,10 @@ namespace Tp3
 
         private void OnClickCommencer(object sender, RoutedEventArgs routedEventArgs)
         {
-            MainWindow fenetre = new MainWindow();
-            fenetre.Show();
+            FenetreCommentJouer fenetreCommentJouer = new FenetreCommentJouer();
+            fenetreCommentJouer.Show();
 
-            this.Close();
+            this.Hide();
         }
 
         private void OnClickQuitter(object sender, RoutedEventArgs routedEventArgs)

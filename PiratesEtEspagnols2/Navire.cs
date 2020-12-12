@@ -6,13 +6,34 @@ namespace PiratesEtEspagnols
 {
     public abstract class Navire
     {
+        /// <summary>
+        /// ***
+        /// </summary>
         public bool EstHorsCombat { get; set; } = false;
-
+        /// <summary>
+        /// ***
+        /// </summary>
         protected int CanonsCote { get; set; }
+        /// <summary>
+        /// Les membres initiales (vie) d'un navire.
+        /// Utilisé pour calculer la puissance.***
+        /// </summary>
         protected int MembresInitial { get; set; }
+        /// <summary>
+        /// Membres restants d'un navire.
+        /// </summary>
         protected int MembresRestant { get; set; }
+        /// <summary>
+        /// ***
+        /// </summary>
         public Canon Canon = null;
+        /// <summary>
+        /// ***
+        /// </summary>
         protected int QuantiteOr { get; set; }
+        /// <summary>
+        /// ***
+        /// </summary>
         protected int QuantiteArmes { get; set; }
 
         public Navire()
@@ -79,8 +100,13 @@ namespace PiratesEtEspagnols
             return MembresRestant;
         }
 
+        /// <summary>
+        /// ***
+        /// </summary>
+        /// <param name="pirate"></param>
         public virtual void EtreEvahis(ModelePirate pirate)
         {
+            //Cette méthode a des références, elle est importante?
         }
 
     }

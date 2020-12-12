@@ -227,6 +227,11 @@ namespace Tp3
             return textVie + vie.ToString();
         }
 
+        public int GetVieEntier()
+        {
+            return _modeleEscorte.DonnerQuantiteMembresRestants();
+        }
+
         /// <summary>
         /// Retourne si le navire est encore dans le jeu
         /// </summary>
@@ -245,13 +250,13 @@ namespace Tp3
             switch (_random.Next(0,3))
             {
                 case 0:
-                    typeEscorte = TypeEscorte.Cheval;
+                    ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat1.png", UriKind.Relative));
                     break;
                 case 1:
-                    typeEscorte = TypeEscorte.Croix;
+                    ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat1.png", UriKind.Relative));
                     break;
                 case 2:
-                    typeEscorte = TypeEscorte.Epee;
+                    ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat1.png", UriKind.Relative));
                     break;
             }
         }
@@ -286,13 +291,13 @@ namespace Tp3
         private void ChangerEtatTypeCheval(EtatNavire etat)
         {
             if (etat == EtatNavire.Neuf)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat1.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat1.png", UriKind.Relative));
             else if (etat == EtatNavire.peuDommage)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat2.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat2.png", UriKind.Relative));
             else if (etat == EtatNavire.TresDommage)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat3.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat3.png", UriKind.Relative));
             else if (etat == EtatNavire.Mort)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat4.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte1Etat4.png", UriKind.Relative));
         }
 
         /// <summary>
@@ -302,13 +307,13 @@ namespace Tp3
         private void ChangerEtatTypeCroix(EtatNavire etat)
         {
             if (etat == EtatNavire.Neuf)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat1.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat1.png", UriKind.Relative));
             else if (etat == EtatNavire.peuDommage)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat2.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat2.png", UriKind.Relative));
             else if (etat == EtatNavire.TresDommage)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat3.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat3.png", UriKind.Relative));
             else if (etat == EtatNavire.Mort)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat4.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte2Etat4.png", UriKind.Relative));
         }
 
         /// <summary>
@@ -318,13 +323,13 @@ namespace Tp3
         private void ChangerEtatTypeEpee(EtatNavire etat)
         {
             if (etat == EtatNavire.Neuf)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat1.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat1.png", UriKind.Relative));
             else if (etat == EtatNavire.peuDommage)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat2.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat2.png", UriKind.Relative));
             else if (etat == EtatNavire.TresDommage)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat3.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat3.png", UriKind.Relative));
             else if (etat == EtatNavire.Mort)
-                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat4.png"));
+                ImageEscorte.Source = new BitmapImage(new Uri("images/Navires/Escortes/Escorte3Etat4.png", UriKind.Relative));
         }
 
     }

@@ -2,20 +2,23 @@
 {
     public class ModelePirate : Navire
     {
+        /// <summary>
+        /// Crée un modèle d'un pirate (joueur).
+        /// </summary>
         public ModelePirate()
         {
-            CanonsCote = 5;
-            MembresInitial = 80;
-            MembresRestant = MembresInitial;
+            CanonsCote = 5; //***
+            MembresInitial = 80; //Vie du début.
+            MembresRestant = MembresInitial; //***
             Canon = new Canon(1.5, 5, 10);
             QuantiteOr = 500; 
         }
 
         /// <summary>
-        /// Ajoute à l'equipage des pirates des marins que desirent se convert
+        /// Ajoute à l'equipage des pirates des marins que desirent se convert.
         /// </summary>
-        /// <param name="equipageEnmie">le nombre de personnes à bord au moment de l'attaque</param>
-        internal void VolerMembres(int equipageEnmie)//TODO
+        /// <param name="equipageEnmie">le nombre de personnes à bord au moment de l'attaque.</param>
+        internal void VolerMembres(int equipageEnmie)//TODO ***** En peut enlèver le commentaire TODO???
         {
             int  equipageConquis = 0;
             
@@ -25,9 +28,9 @@
         }
 
         /// <summary>
-        /// Calcule combien de membres d'équipage du navire ennemi sont pris selon la règle (1 pirate vaut 5 marins royalles)
+        /// Calcule combien de membres d'équipage du navire ennemi sont pris selon la règle (1 pirate vaut 5 marins royalles).
         /// </summary>
-        /// <param name="equipageEnmie">le nombre de personnes à bord au moment de l'attaque</param>
+        /// <param name="equipageEnmie">le nombre de personnes à bord au moment de l'attaque.</param>
         /// <returns>Le nombre d'ennemis capturés</returns>
         private int Dispute(int equipageEnmie)
         {
@@ -43,10 +46,10 @@
         }
 
         /// <summary>
-        /// L'or obtenu des invasions des navires enemies et des vendes de armes est ajoute aux biens des pirates
+        /// L'or obtenu des invasions des navires enemies et des vendes de armes est ajoute aux biens des pirates.
         /// </summary>
-        /// <param name="valeurRecupere">La quantite de or volé ou reçu par la vend d'un arme</param>
-        internal void VolerOr(int valeurRecupere)//TODO
+        /// <param name="valeurRecupere">La quantite de or volé ou reçu par la vend d'un arme.</param>
+        internal void VolerOr(int valeurRecupere)//TODO ***** En peut enlèver le commentaire TODO???
         {
             QuantiteOr += valeurRecupere;
         }
@@ -54,12 +57,13 @@
         /// <summary>
         /// Des armes volées pendent des invasions sont mis dans les biens des pirates.
         /// </summary>
-        /// <param name="quantiteVole">La quantité d'armes volés</param>
-        internal void VolerArmes(int quantiteVole)//TODO
+        /// <param name="quantiteVole">La quantité d'armes volés.</param>
+        internal void VolerArmes(int quantiteVole)//TODO ***** En peut enlèver le commentaire TODO???
         {
             QuantiteArmes += quantiteVole;
         }
 
+        ///***
         public string GetBiens()
         {
             string text = "\n- Armes : ";
@@ -120,6 +124,11 @@
             }
         }
 
+        /// <summary>
+        /// Enlève une propriété numérique donnée du pirate.
+        /// </summary>
+        /// <param name="p">Propriété à enlèver</param>
+        /// <param name="valeurAEnlever">Quantité à enlèver à la propriété.</param>
         public void EnleverPropriete(ProprietesPirate p, int valeurAEnlever)
         {
             switch (p)
@@ -139,6 +148,11 @@
             }
         }
 
+        /// <summary>
+        /// Permet de recupérer une propriété numérique donnée du pirate.
+        /// </summary>
+        /// <param name="p">Propriété voulue.</param>
+        /// <returns>Propriété demandé.</returns>
         public int GetProprietesPirate(ProprietesPirate p)
         {
             switch (p)
@@ -157,7 +171,9 @@
         }
     }
 
-
+    /// <summary>
+    /// Différentes propriétés avec des valeurs numériques qui vont être modifiées.
+    /// </summary>
     public enum ProprietesPirate
     {
         Membres,

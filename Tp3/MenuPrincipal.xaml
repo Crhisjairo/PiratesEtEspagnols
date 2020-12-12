@@ -12,8 +12,12 @@
         Title="MenuPrincipal" Height="600" Width="600">
 
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="images/MenuPrincipal/BackgroundFenetrePrincipal.png"></ImageBrush>
+        </Grid.Background>
+
         <StackPanel HorizontalAlignment="Center">
-            <Label Content="Pirates et Espagnols" Padding="0, 100, 0, 0" FontSize="50"/>
+            <Label FontFamily="Times New Roman" Foreground="Black" Content="Pirates et Espagnols" Padding="0, 90, 0, 0" FontSize="55" FontWeight="Bold"/>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center" Margin="200,218,200,217" >
@@ -21,8 +25,9 @@
             <Button Style="{StaticResource ButtonMenu}" Content="Quitter" Click="OnClickQuitter"></Button>
         </StackPanel>
 
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Label Content="Christian C. et Adriana G." Padding="0, 0, 10, 0" FontSize="20" FontFamily="Times New Roman"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Label Content="Développé par:" Width="92"></Label>
+            <Label Content="Christian C. et Adriana G." Foreground="Black" FontWeight="Bold" Margin="0,0,0,80" FontSize="25" FontFamily="Times New Roman"/>
         </StackPanel>
     </Grid>
 </Window>

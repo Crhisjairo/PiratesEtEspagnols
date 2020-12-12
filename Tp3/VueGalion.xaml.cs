@@ -256,6 +256,11 @@ namespace Tp3
             return textVie + vie.ToString();
         }
 
+        public int GetVieEntier()
+        {
+            return _modeleGalion.DonnerQuantiteMembresRestants();
+        }
+
 
         /// <summary>
         /// Retourne si le navire est encore dans le jeu
@@ -277,16 +282,15 @@ namespace Tp3
 
         public void ChangerEtat(EtatNavire etat)
         {
-            // _galion.ChangerEtat();
 
             if (etat == EtatNavire.Neuf)
-                ImageGalion.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat1.png"));
+                ImageGalion.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat1.png", UriKind.Relative));
             else if (etat == EtatNavire.peuDommage)
-                ImageGalion.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat2.png"));
+                ImageGalion.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat2.png", UriKind.Relative));
             else if (etat == EtatNavire.TresDommage)
-                ImageGalion.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat3.png"));
+                ImageGalion.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat3.png", UriKind.Relative));
             else if (etat == EtatNavire.Mort)
-                ImageGalion.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat4.png"));
+                ImageGalion.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat4.png", UriKind.Relative));
         }
 
  

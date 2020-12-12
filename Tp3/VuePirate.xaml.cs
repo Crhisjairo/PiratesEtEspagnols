@@ -200,6 +200,11 @@ namespace Tp3
             return textVie + vie.ToString();
         }
 
+        public int GetVieEntier()
+        {
+            return _modelePirate.DonnerQuantiteMembresRestants();
+        }
+
         public string GetBiens()
         {
             string textBiens = GetVie();
@@ -230,13 +235,13 @@ namespace Tp3
             //_modelePirate.ChangerEtat();
 
             if (etat == EtatNavire.Neuf)
-                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat1.png"));
+                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat1.png", UriKind.Relative));
             else if (etat == EtatNavire.peuDommage)
-                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat2.png"));
+                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat2.png", UriKind.Relative));
             else if (etat == EtatNavire.TresDommage)
-                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat3.png"));
+                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat3.png", UriKind.Relative));
             else if (etat == EtatNavire.Mort)
-                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat4.png"));
+                ImagePirate.Source = new BitmapImage(new Uri("images/Navires/Pirate/PirateEtat4.png", UriKind.Relative));
         }
     }
 }

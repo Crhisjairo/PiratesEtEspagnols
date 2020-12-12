@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PiratesEtEspagnols
 {
     public class ModeleEscorte : Navire
     {
-        
-        /*private TypeEscorte type = TypeEscorte.Cheval;
-        */
-
+        /// <summary>
+        /// Crée un modèle d'une escorte.
+        /// </summary>
         public ModeleEscorte()
         {
             CanonsCote = 16;
@@ -20,7 +17,7 @@ namespace PiratesEtEspagnols
         }
 
         /// <summary>
-        /// Determiner au hasard combien d'armes l'escorte possede.
+        /// Determine au hasard combien d'armes l'escorte possède.
         /// </summary>
         private void DeterminerQuantiteArmes()
         {
@@ -42,14 +39,15 @@ namespace PiratesEtEspagnols
         }
     }
 
-
-
-
-
+    /// <summary>
+    /// Le type d'escorte.
+    /// Selon le type, l'image va être géneré.
+    /// Pour le futur, les escortes seront différentes les unes aux autres.
+    /// </summary>
     public enum TypeEscorte
     {
-        Epee,
-        Cheval,
-        Croix
+        Epee, //Escorte type épée.
+        Cheval, //Escorte type cheval.
+        Croix //Escorte type croix.
     }
 }

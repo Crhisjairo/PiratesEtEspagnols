@@ -13,28 +13,58 @@ namespace Tp3
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// Jeu principal.
+        /// </summary>
         private static Jeu _jeu = new Jeu();
-        private static FenetreMagasin fenetreMagasin = new FenetreMagasin(_jeu.GetPirate());
-
-        private Dictionary<int, IVueNavire> _dicVueNavires = new Dictionary<int, IVueNavire>();
-        private VuePirate _vuePirate;
-        private int AttaquePirate { get; set; }
-
-        private static DispatcherTimer _horloge = new DispatcherTimer();
+        /// <summary>
+        /// Fenêtre du magasin qui va être initialisé après.
+        /// </summary>
+        private static FenetreMagasin fenetreMagasin;
 
         /// <summary>
-        /// Compteur de l'animation de présentation (Mouvement du background et message du niveau).
+        /// Dictionnaire contenant les vues des navires.
+        /// </summary>
+        private Dictionary<int, IVueNavire> _dicVueNavires;
+        /// <summary>
+        /// Vue du pirate.
+        /// </summary>
+        private VuePirate _vuePirate;
+
+        /// <summary>
+        /// ****
+        /// </summary>
+        private int AttaquePirate { get; set; }
+
+        /// <summary>
+        /// Horloge principal.
+        /// </summary>
+        private static DispatcherTimer _horloge;
+
+        /// <summary>
+        /// Compteur de l'animation de présentation (Mouvement du background plus vite).
         /// </summary>
         private int _compteurAnimationPresentation = 0;
+        /// <summary>
+        /// Compteur de l'animation du background.
+        /// </summary>
         private int _compteurAnimationBackground = 0;
 
         public MainWindow()
         {
             //Creer et placer les UserControl
             InitializeComponent();
-            
+            //Initialiser le jeu.
+            InitialisationDuJeu();
+        }
+
+        private void InitialisationDuJeu()
+        {
             //Préparation de logique (modèle).
             _jeu.PreparerJeu();
+
+            //Préparation de la vue du jeu.
+            PreparerVueJeu();
 
             //Préparation des Navires (vues).
             CreerVueDesNavires();
@@ -43,12 +73,28 @@ namespace Tp3
             CreerHorlogeMouvement();
 
             //Méthodes Debug//
-            VerifierCorrespondanceDeCles();
+            //VerifierCorrespondanceDeCles();
         }
 
+        /// <summary>
+        /// Prepare l'interface d'utilisateur, la vue.
+        /// </summary>
+        private void PreparerVueJeu()
+        {
+            fenetreMagasin = new FenetreMagasin(_jeu.GetPirate());
+            _dicVueNavires = new Dictionary<int, IVueNavire>();
+
+            TextBlockNiveauActuel.Text = _jeu.ToStringNiveauActuel(); //affichage du niveau.
+        }
+
+        /// <summary>
+        /// ***
+        /// </summary>
         private void CreerHorlogeMouvement()
         {
-            _horloge.Interval = TimeSpan.FromMilliseconds(100);
+            _horloge = new DispatcherTimer();
+
+            _horloge.Interval = TimeSpan.FromMilliseconds(50);
             _horloge.IsEnabled = true;
 
             //Méthodes à executer à chaque tick
@@ -58,6 +104,11 @@ namespace Tp3
             DemarrerHorlogePrincipal();
         }
 
+        /// <summary>
+        /// Déplace le background au rythme de l'horloge.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HorlogeAvanceAnimationPresentation(object sender, EventArgs e)
         {
             //Changement de margin de l'images pour avoir l'impression qu'elle bouge.
@@ -65,6 +116,12 @@ namespace Tp3
             _compteurAnimationPresentation ++;
         }
 
+        /// <summary>
+        /// Verifie si l'animation initial (Déplacement rapide du background) est finit.
+        /// Quand cette animation est finit, différentes méthodes s'enlèvent et s'ajoutent d'un tick d'horloge.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void VerifierAnimationFinit(object sender, EventArgs e)
         {
             if (_compteurAnimationPresentation > 20) //si le compteur est arrivé à un point
@@ -74,22 +131,76 @@ namespace Tp3
 
                 _horloge.Tick += HorlogeAvanceJeu; //Ajout de la méthode qui roule le jeu.
                 _horloge.Tick += HorlogeAvanceAnimationBackground; //Ajout de la méthode qui déplace le background.
-                _horloge.Tick += HorlogeAvanceAffichageProprietes;
+                _horloge.Tick += VerifierEtatNavires;
             }
         }
 
-        private void HorlogeAvanceAffichageProprietes(object sender, EventArgs e)
+        /// <summary>
+        /// Verifie l'état d'un navire à chaque tick pour ensuite lui donner une apparence.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VerifierEtatNavires(object sender, EventArgs e)
         {
-            
+            foreach (IVueNavire navire in _dicVueNavires.Values)
+            {
+                    if (navire is VueGalion)
+                    {
+                        if (navire.GetVieEntier() == 0)
+                        {
+                            ((VueGalion)navire).ChangerEtat(EtatNavire.Mort);
+                        } else if (navire.GetVieEntier() < 45)
+                        {
+                            ((VueGalion)navire).ChangerEtat(EtatNavire.TresDommage);
+                        }
+                        else if (navire.GetVieEntier() < 75)
+                        {
+                            ((VueGalion)navire).ChangerEtat(EtatNavire.peuDommage);
+                        }
+
+                    }else if (navire is VueEscorte)
+                    {
+                        if (navire.GetVieEntier() == 0)
+                        {
+                            ((VueEscorte)navire).ChangerEtat(EtatNavire.Mort);
+                        }else if (navire.GetVieEntier() < 45)
+                        {
+                            ((VueEscorte)navire).ChangerEtat(EtatNavire.TresDommage);
+                        }
+                        else if (navire.GetVieEntier() < 75)
+                        {
+                            ((VueEscorte)navire).ChangerEtat(EtatNavire.peuDommage);
+                        }
+                        
+                    }
+            }
+            //Pour le pirate
+            if (_vuePirate.GetVieEntier() == 0)
+            {
+                _vuePirate.ChangerEtat(EtatNavire.Mort);
+            }
+            else if (_vuePirate.GetVieEntier() < 45)
+            {
+                _vuePirate.ChangerEtat(EtatNavire.TresDommage);
+            }
+            else if (_vuePirate.GetVieEntier() < 75)
+            {
+                _vuePirate.ChangerEtat(EtatNavire.peuDommage);
+            }
+
         }
 
-
+        /// <summary>
+        /// Déplace le background lentement au rythme de l'horloge.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HorlogeAvanceAnimationBackground(object sender, EventArgs e)
         {
             if (_compteurAnimationBackground % 5 == 0)
             {
                 NiveauBackground.Margin = new Thickness(0, -1214, 0, 
-                    (-18 - _compteurAnimationPresentation * 30) - _compteurAnimationBackground * 2);
+                    (-18 - _compteurAnimationPresentation * 30) - _compteurAnimationBackground * 1.2);
             }
 
             if (_compteurAnimationBackground > 390)
@@ -97,15 +208,13 @@ namespace Tp3
                 _horloge.Tick -= HorlogeAvanceAnimationBackground;
             }
 
-            //txtListeVueNavires.Text = _compteurAnimationBackground.ToString();
-            
+            //txtListeVueNavires.Text = _compteurAnimationBackground.ToString(); //Affiche le compteur d'animation dans le HUD.
 
             _compteurAnimationBackground++;
         }
 
-
         /// <summary>
-        /// Methode pour incluire un navire dans le Jeu.
+        /// Création des vues des navires selon son modèle.
         /// </summary>
         private void CreerVueDesNavires()
         {
@@ -130,7 +239,6 @@ namespace Tp3
             _vuePirate = new VuePirate(_jeu.GetPirate());
 
             AjouterNaviresAuCanvas();
-
         }
 
         /// <summary>
@@ -188,13 +296,85 @@ namespace Tp3
         /// <param name="e"></param>
         private void HorlogeAvanceJeu(object sender, EventArgs e)
         {
-            JeuContinue();
-            AfficherVie();
+            if (EstJeuFinit())
+            {
+                ReinitialiserVue();
+                return; //Arrête le jeu.
+            }
 
-            _vuePirate.TickHorloge++;
+            AfficherVie(); //***
+            _vuePirate.TickHorloge++; //***
+            MouvementerNavires(); //***
+            VerifierAttaques(); //***
+        }
 
-            MouvementerNavires();
-            VerifierAttaques();
+        /// <summary>
+        /// Arrête l'horloge, efface tous les éléments du canvas, repositionne le background et réinitialise les compteurs d'animations.
+        /// </summary>
+        private void ReinitialiserVue()
+        {
+            _horloge.Stop();
+
+            Surface.Children.Clear(); //Netoyage du canvas 
+
+            NiveauBackground.Margin = new Thickness(0, -1214, 0, -18); //position par défaut du background.
+
+            _compteurAnimationBackground = 0;
+            _compteurAnimationPresentation = 0;
+
+            InitialisationDuJeu();
+        }
+
+        /// <summary>
+        /// Verifie s'il y a un gagnant.
+        /// </summary>
+        /// <returns></returns>
+        private bool EstJeuFinit()
+        {
+            //Si le pirate est mort, le jeu s'arrête.
+            if (_vuePirate.EstMort())
+            {
+                //activer button RECOMENCER
+                MessageBox.Show("Vous avez perdu :(\nLe jeu va recommencer complètement.", "Pirate detruit");
+                ReinitialiserVue();
+                return true;
+            }
+
+            //Si au moins un navire est en vie, le jeu continue.
+            foreach (IVueNavire navire in _dicVueNavires.Values)
+            {
+                if (!navire.EstMort())
+                {
+                    return false;
+                }
+            }
+
+            //Si les navires sont tous mort et le pirate vivant, le pirate gagne
+            MessageBox.Show("On avance. Arrr!!!", "Espagnols detruits");
+
+            AvancerNiveau();
+            return true;
+            //activer button nextLevel
+        }
+
+        /// <summary>
+        /// Avance un niveau du jeu.
+        /// </summary>
+        private void AvancerNiveau()
+        {
+            int niveauActuel = _jeu.GetNiveauActuel();
+
+            if (niveauActuel == 4)
+            {
+                MessageBox.Show("Wow, vous avez vaincu les espagnols!\n" +
+                                "Merci d'avoir joué! Le jeu va se fermer.", "Espagnols detruits");
+                Close();
+                return;
+            }
+
+            ReinitialiserVue();
+
+            _jeu.SetNiveau(niveauActuel + 1);
         }
 
         /// <summary>
@@ -292,7 +472,6 @@ namespace Tp3
 
             }
 
-            
             if (!(navireReference is VuePirate))
             {
                 positionNavireEvalue = _vuePirate.GetPositionReelNavire();
@@ -417,32 +596,7 @@ namespace Tp3
             ViePirate.Text = "Pirate: \n" + _vuePirate.GetBiens();
         }
 
-        /// <summary>
-        /// Verifie si ^les pirates ont gagne ou perdu;
-        /// </summary>
-        /// <returns></returns>
-        private void JeuContinue()
-        {
-
-            if (_vuePirate.EstMort())
-            {
-                //activer button RECOMENCER
-                return;
-            }
-            
-            foreach (IVueNavire navire in _dicVueNavires.Values)
-            {
-                if (!navire.EstMort())
-                {
-                    return;
-                }
-            }
-            //activer button nextLevel
-        }
-
-
-
-
+       
 
 
         /// <summary>
@@ -494,9 +648,17 @@ namespace Tp3
 
             for (int i = 0; i < _dicVueNavires.Count; i++)
             {
-                txtListeVueNavires.Text += "\n" + _dicVueNavires[i].GetType().ToString();
-                txtListeModelesNavires.Text += "\n" + _jeu.GetNavire(i).ToString();
+                //txtListeVueNavires.Text += "\n" + _dicVueNavires[i].GetType().ToString();
+               //txtListeModelesNavires.Text += "\n" + _jeu.GetNavire(i).ToString();
 
+            }
+        }
+
+        private void ButtonTuer_OnClick(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < _dicVueNavires.Count; i++)
+            {
+                _dicVueNavires[i].SubirAttaque(1000);
             }
         }
     }

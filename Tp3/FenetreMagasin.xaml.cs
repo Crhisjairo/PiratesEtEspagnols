@@ -12,7 +12,6 @@ namespace Tp3
     {
         private ModeleMagasin _magasin;
 
-
         public FenetreMagasin(ModelePirate pirate)
         {
             InitializeComponent();
@@ -45,7 +44,6 @@ namespace Tp3
                 BtAdquerirCannons.IsEnabled = false;
             }
         }
-
 
         /// <summary>
         /// Cache la fênetre à la place de la fermer.

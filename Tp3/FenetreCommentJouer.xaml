@@ -1,0 +1,90 @@
+﻿<Window x:Class="Tp3.FenetreCommentJouer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tp3"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="Comment jouer?" Height="400" Width="600">
+    <Window.Resources>
+        <!--Style du titre d'un article-->
+        <Style TargetType="Label" x:Key="TitreAction">
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            <Setter Property="Margin" Value="0,0,10,0"></Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="59*"></ColumnDefinition>
+            <ColumnDefinition Width="61*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <ImageBrush ImageSource="images/HUD/HUDBackground.png"></ImageBrush>
+        </Grid.Background>
+
+        <Label Margin="50,0,0,0" Foreground="WhiteSmoke">Tout est beau, mais</Label>
+
+        <Label HorizontalAlignment="Right" Margin="0,10,177,0" Foreground="White" FontSize="30" Grid.ColumnSpan="2" Width="251">Comment je joue?</Label>
+
+        <!--Première colomne-->
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="28,0,15,0" Width="252">
+            <Label Style="{StaticResource TitreAction}" Height="30">Se déplacer</Label>
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Image Source="images/MenuPrincipal/TouchesFleches.png" Width="137" Margin="0,-1,0,0" />
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="80,0,67,0" Width="148">
+            <Label Style="{StaticResource TitreAction}" Height="30">Tu est le:</Label>
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Image Source="images/Navires/Pirate/PirateEtat1.png" Width="50" />
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="18,0,13,0" Width="264">
+            <Label Style="{StaticResource TitreAction}" Margin="0,31,10,29">Les navires tirent par les côtés</Label>
+        </StackPanel>
+
+        <!--Deuxième colomne-->
+        <Button Grid.Column="1" Margin="175,27,30,35" FontSize="15" Style="{StaticResource ButtonMenu}" Height="Auto"
+                Click="ButtonJouer_OnClick">Jouer!</Button>
+
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="57,0,44,0" Width="204">
+            <Label Style="{StaticResource TitreAction}" Height="30">Tirer</Label>
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Image Source="images/MenuPrincipal/ToucheEspace.png" Height="30"/>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="13,0,-12,0" Width="304">
+            <Label Margin="0,31,0,31" Style="{StaticResource TitreAction}" Height="30" Width="150">Tes enemies sont:</Label>
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Image Source="images/Navires/Galion/GalionEtat1.png" />
+            </Border>
+            <Label FontSize="15" Margin="0,31,0,31" Style="{StaticResource TitreAction}" Height="30" >et</Label>
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Image Source="images/Navires/Escortes/Escorte1Etat1.png" />
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="19,0,2,0" Width="284">
+            <Label Style="{StaticResource TitreAction}" Margin="0,31,10,29">N'oublie pas d'utiliser le magasin</Label>
+        </StackPanel>
+
+    </Grid>
+</Window>

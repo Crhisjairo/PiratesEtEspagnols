@@ -7,9 +7,12 @@ namespace PiratesEtEspagnols
     public class ModeleGalion : Navire
     {
         
-
+        ///***
         internal int CanonsArrier { get; set; }
 
+        /// <summary>
+        /// Crée un modèle d'un galion espagnol.
+        /// </summary>
         public ModeleGalion()
         {
             CanonsCote = 36;
@@ -32,7 +35,7 @@ namespace PiratesEtEspagnols
         /// <summary>
         /// Subir l'attaque final des pirates.
         /// </summary>
-        /// <param name="pirate">Le navire qui attaque</param>
+        /// <param name="pirate">Le navire qui attaque.</param>
         public override void EtreEvahis(ModelePirate pirate)
         {
             pirate.VolerOr(QuantiteOr);
@@ -44,9 +47,9 @@ namespace PiratesEtEspagnols
 
         /// <summary>
         /// Donne le attaque par l'arrier que le navire peut faire d'accord avec l'efficience de l'equipage, la cantité de cannons et la puissance du canon.
-        /// Si jamais le temps de recharge dès le dernier tir n'est pas respecté la methode retourne uun ataque de ZERO.
+        /// Si jamais le temps de recharge dès le dernier tir n'est pas respecté la methode retourne un ataque de ZERO.
         /// </summary>
-        /// <param name="tick">Moment du jeux dont le navire essaye de tirer avec ses canons d'arrier</param>
+        /// <param name="tick">Moment du jeux dont le navire essaye de tirer avec ses canons d'arrier.</param>
         /// <returns></returns>
         public int TirerArrier(int tick)
         {

@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Buttons.cs" />
     <Compile Include="Canon.cs" />
-    <Compile Include="CoteCanon.cs" />
     <Compile Include="EtatNavire.cs" />
     <Compile Include="ModeleMagasin.cs" />
     <Compile Include="ModeleGalion.cs" />

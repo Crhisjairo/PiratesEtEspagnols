@@ -6,10 +6,16 @@ namespace PiratesEtEspagnols2
     public class ModeleMagasin
     {
         /// <summary>
-        /// Pirate qui contiendra l'or. Il est se crée dans la classe Jeu.
+        /// Pirate qui contiendra l'or.
+        /// On lui enlèvera son or lors d'un achat.
+        /// Il est s'est crée dans la classe Jeu.
         /// </summary>
         private ModelePirate _pirate;
 
+        /// <summary>
+        /// Crée un modèle du magasin.
+        /// </summary>
+        /// <param name="pirate">Pirate qui va effectuer l'achat.</param>
         public ModeleMagasin(ModelePirate pirate)
         {
             _pirate = pirate;
@@ -38,6 +44,10 @@ namespace PiratesEtEspagnols2
             }
         }
 
+        /// <summary>
+        /// Permet de récuperer l'or du pirate pour l'afficher dans le magasin.
+        /// </summary>
+        /// <returns>L'or du pirate.</returns>
         public int GetOrPirate()
         {
             return _pirate.GetProprietesPirate(ProprietesPirate.Or);

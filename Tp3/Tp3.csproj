@@ -59,7 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Balle.xaml">
+    <Page Include="FenetreCommentJouer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -83,8 +83,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Balle.xaml.cs">
-      <DependentUpon>Balle.xaml</DependentUpon>
+    <Compile Include="FenetreCommentJouer.xaml.cs">
+      <DependentUpon>FenetreCommentJouer.xaml</DependentUpon>
     </Compile>
     <Compile Include="FenetreMagasin.xaml.cs">
       <DependentUpon>FenetreMagasin.xaml</DependentUpon>
@@ -146,9 +146,6 @@
       <Project>{868b2109-7e3b-4dd1-aae8-bed31fd16cae}</Project>
       <Name>PiratesEtEspagnols</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="images\MenuPrincipal\Background.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Effects\Explosion1.png" />
@@ -241,6 +238,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\Magasin\SacMonnaie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\MenuPrincipal\ToucheEspace.png" />
+    <Resource Include="images\MenuPrincipal\TouchesFleches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\MenuPrincipal\BackgroundFenetrePrincipal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

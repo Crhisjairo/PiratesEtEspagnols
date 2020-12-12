@@ -15,6 +15,8 @@ namespace Tp3
         Dictionary<string, double> GetChampDeTir();
         void SubirAttaque(int forceAttaque);
         string GetVie();
+
+        int GetVieEntier();
         bool EstMort();
 
     }

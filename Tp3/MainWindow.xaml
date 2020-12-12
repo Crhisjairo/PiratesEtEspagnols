@@ -33,18 +33,26 @@
             <Border Grid.Column="1" BorderBrush="Black" BorderThickness="2"></Border>
 
             <!--Elements-->
-            <!--**À COMPLÈTER**-->
+            
+            <!--Juste pour débug-->
+            <!--
             <StackPanel Orientation="Vertical">
                 <TextBlock FontSize="13" Name="txtListeVueNavires" Margin="0, 0, 20, 0">Vues</TextBlock>
                 <TextBlock FontSize="13" Name="txtListeModelesNavires">Modeles</TextBlock>
             </StackPanel>
+            -->
 
-            <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,30">
-                <Button Width="130" Height="50" FontSize="25" Click="ButtonMagasin_OnClick">Magasin</Button>
-            </StackPanel>
             <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,100">
                 <TextBlock x:Name="ViePirate" Foreground="WhiteSmoke"  FontFamily="Verdana" FontSize="15" FontWeight="Bold" Margin="40,0,0,20"></TextBlock>
                 <TextBlock x:Name="VieEnnemie" Foreground="WhiteSmoke"  FontFamily="Verdana" FontSize="15" FontWeight="Bold" Margin="40,0,0,20"></TextBlock>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,30">
+                <!--Enlèver le commentaire pour afficher le boutton pour tuer les enemis et avancer de niveau-->
+                <!-- <Button Click="ButtonTuer_OnClick">Tuer enemis</Button> -->
+
+                <TextBlock Foreground="WhiteSmoke" FontSize="30" HorizontalAlignment="Center" Margin="0,0,0,20" Name="TextBlockNiveauActuel" Text="Niveau: ?"></TextBlock>
+                <Button Width="130" Height="50" FontSize="25" Click="ButtonMagasin_OnClick" Focusable="False">Magasin</Button>
             </StackPanel>
 
         </Grid>
