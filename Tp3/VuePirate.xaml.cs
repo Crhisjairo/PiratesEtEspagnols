@@ -16,15 +16,32 @@ namespace Tp3
         public static double PosInitX { get; } = 320;
         public static double PosInitY { get; } = 800;
 
+        /// <summary>
+        /// Quel est l'acceletation de cette vue à chaque tick d'horloge.
+        /// </summary>
         private const int Acceleration = 4;
+        /// <summary>
+        /// Temps de jeu de cette navire.
+        /// Utilisé pour les tests de tir (recharge de canon)
+        /// </summary>
         public int TickHorloge { set; get; }
-        private double ChangementPositionX { get; set; }
-        private double ChangementPositionY { get; set; }
+        /// <summary>
+        /// Le deplacement desiré vers la droit/gauche dans le tour.
+        /// </summary>
+        public double ChangementPositionX { get; set; }
+        /// <summary>
+        /// Le deplacement desiré vers l'haut/bas dans le tour.
+        /// </summary>
+        public double ChangementPositionY { get; set; }
+        /// <summary>
+        /// Position top estimé dans l'axe Y apres le deplacement desiré.
+        /// </summary>
         private double NextY { get; set; }
+        /// <summary>
+        /// Position left estimé dans l'axe X apres le deplacement desiré.
+        /// </summary>
         private double NextX { get; set; }
 
-
-        // images/Navires/Pirate/PirateEtat1.png
         public VuePirate(Navire modelePirate)
         {
             InitializeComponent();
@@ -200,11 +217,19 @@ namespace Tp3
             return textVie + vie.ToString();
         }
 
+        /// <summary>
+        /// Sert a recuperer la quantité de vie du navire
+        /// </summary>
+        /// <returns>Quantité de vie du navire</returns>
         public int GetVieEntier()
         {
             return _modelePirate.DonnerQuantiteMembresRestants();
         }
 
+        /// <summary>
+        /// Returne la quantité d'or et de armes que le pirate a dans son navire.
+        /// </summary>
+        /// <returns> string avec les informations de combien d'or et la quantite d'armes que le pirate a</returns>
         public string GetBiens()
         {
             string textBiens = GetVie();
@@ -221,15 +246,10 @@ namespace Tp3
             return _modelePirate.EstHorsCombat;
         }
 
-
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Change l'image du navir d'acord avec la quantité de vie qu'il a encore.
+        /// </summary>
+        /// <param name="etat">Definisse dans quel etat de degat le navire est</param>
         public void ChangerEtat(EtatNavire etat)
         {
             //_modelePirate.ChangerEtat();

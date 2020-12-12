@@ -11,21 +11,51 @@ namespace Tp3
     /// </summary>
     public partial class VueEscorte : UserControl, IVueNavire
     {
+        /// <summary>
+        /// Modele Escorte du tipe Navire, c'est avec cette navire que l'user control se comunique avec l'objet navire.
+        /// </summary>
         private Navire _modeleEscorte = null;
         
-        public static double PosInitX { get; } = 100; //100
+        public static double PosInitX { get; } = 100;
         public static double PosInitY { get; } = 200;
 
+        /// <summary>
+        /// Quel est l'acceletation de cette vue à chaque tick d'horloge.
+        /// </summary>
         private const int Acceleration = 2;
+        /// <summary>
+        /// Temps de jeu de cette navire.
+        /// Utilisé pour les tests de tir (recharge de canon)
+        /// </summary>
         public int TickHorloge { set; get; }
+        /// <summary>
+        /// Le deplacement desiré vers la droit/gauche dans le tour.
+        /// </summary>
         public double ChangementPositionX { get; set; }
+        /// <summary>
+        /// Le deplacement desiré vers l'haut/bas dans le tour.
+        /// </summary>
         public double ChangementPositionY { get; set; }
+        /// <summary>
+        /// Position top estimé dans l'axe Y apres le deplacement desiré.
+        /// </summary>
         private double NextY { get; set; }
+        /// <summary>
+        /// Position left estimé dans l'axe X apres le deplacement desiré.
+        /// </summary>
         private double NextX { get; set; }
+        /// <summary>
+        /// Vaiable pour faire les choix randomiques comme le mouvment, si le navire tire, etc.
+        /// </summary>
         private static Random _random = new Random();
+        /// <summary>
+        /// La force de l'attaque fait dans le tour. 
+        /// </summary>
         private int DommageAttaque { get; set; }
 
-        //Christian, Est-ce que tu utilise ça pour quelque chose?
+        /// <summary>
+        /// definisse le type d'escorte utilisé.
+        /// </summary>
         private TypeEscorte typeEscorte;
         
         public VueEscorte(Navire modeleEscorte)
@@ -227,6 +257,10 @@ namespace Tp3
             return textVie + vie.ToString();
         }
 
+        /// <summary>
+        /// Sert a recuperer la quantité de vie du navire
+        /// </summary>
+        /// <returns>Quantité de vie du navire</returns>
         public int GetVieEntier()
         {
             return _modeleEscorte.DonnerQuantiteMembresRestants();

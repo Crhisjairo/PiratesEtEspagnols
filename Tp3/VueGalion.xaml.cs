@@ -16,14 +16,42 @@ namespace Tp3
         public static double PosInitX { get; } = 320;
         public static double PosInitY { get; } = 10;
 
+        /// <summary>
+        /// Quel est l'acceletation de cette vue à chaque tick d'horloge.
+        /// </summary>
         private const int Acceleration = 1;
+        /// <summary>
+        /// Temps de jeu de cette navire.
+        /// Utilisé pour les tests de tir (recharge de canon)
+        /// </summary>
         public int TickHorloge { set; get; }
+        /// <summary>
+        /// Le deplacement desiré vers la droit/gauche dans le tour.
+        /// </summary>
         public double ChangementPositionX { get; set; }
+        /// <summary>
+        /// Le deplacement desiré vers l'haut/bas dans le tour.
+        /// </summary>
         public double ChangementPositionY { get; set; }
+        /// <summary>
+        /// Position top estimé dans l'axe Y apres le deplacement desiré.
+        /// </summary>
         private double NextY { get; set; }
+        /// <summary>
+        /// Position left estimé dans l'axe X apres le deplacement desiré.
+        /// </summary>
         private double NextX { get; set; }
-        private Random _random = new Random();
+        /// <summary>
+        /// Vaiable pour faire les choix randomiques comme le mouvment, si le navire tire, etc.
+        /// </summary>
+        private static Random _random = new Random();
+        /// <summary>
+        /// La force de l'attaque fait dans le tour. 
+        /// </summary>
         private int DommageAttaque { get; set; }
+        /// <summary>
+        /// La force de l'attaque fait dans le tour par ses cannons au arrier du navire
+        /// </summary>
         private int DommageAttaqueExtra { get; set; }
 
         public VueGalion(Navire modeleGalion)
@@ -256,11 +284,14 @@ namespace Tp3
             return textVie + vie.ToString();
         }
 
+        /// <summary>
+        /// Sert a recuperer la quantité de vie du navire
+        /// </summary>
+        /// <returns>Quantité de vie du navire</returns>
         public int GetVieEntier()
         {
             return _modeleGalion.DonnerQuantiteMembresRestants();
         }
-
 
         /// <summary>
         /// Retourne si le navire est encore dans le jeu
@@ -271,15 +302,10 @@ namespace Tp3
             return _modeleGalion.EstHorsCombat;
         }
 
-
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Change l'image du navir d'acord avec la quantité de vie qu'il a encore.
+        /// </summary>
+        /// <param name="etat">Definisse dans quel etat de degat le navire est</param>
         public void ChangerEtat(EtatNavire etat)
         {
 

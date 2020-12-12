@@ -63,7 +63,10 @@
             QuantiteArmes += quantiteVole;
         }
 
-        ///***
+        /// <summary>
+        /// Recupere les biens que sont dans le navire pirate à un certain moment
+        /// </summary>
+        /// <returns>La quantite de or et de armes du navire</returns>
         public string GetBiens()
         {
             string text = "\n- Armes : ";

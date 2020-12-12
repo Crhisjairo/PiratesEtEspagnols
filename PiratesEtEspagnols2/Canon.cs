@@ -31,7 +31,7 @@
             Puissance = puissance;
             TempsRecharge = tempsRecharge;
             ChamDeTire = champDeTire;
-            DernierTir = -10; //***
+            DernierTir = -10; //C'est avec cette proprieté qu'on sache se le navire a eu le temps necessaire pour recharcher ses cannons avant tirer un plus fois. 
         }
     }
 }

@@ -7,7 +7,9 @@ namespace PiratesEtEspagnols
     public class ModeleGalion : Navire
     {
         
-        ///***
+        /// <summary>
+        /// Le Navire Galion est le seul qu'a des cannons aussi au arrier, pour faire des attaques il faiu savoir combien ils sont.
+        /// </summary>
         internal int CanonsArrier { get; set; }
 
         /// <summary>

@@ -17,6 +17,7 @@ namespace Tp3
         /// Jeu principal.
         /// </summary>
         private static Jeu _jeu = new Jeu();
+
         /// <summary>
         /// Fenêtre du magasin qui va être initialisé après.
         /// </summary>
@@ -32,7 +33,7 @@ namespace Tp3
         private VuePirate _vuePirate;
 
         /// <summary>
-        /// ****
+        /// Ls force de l'attaque du pirate
         /// </summary>
         private int AttaquePirate { get; set; }
 
@@ -45,6 +46,7 @@ namespace Tp3
         /// Compteur de l'animation de présentation (Mouvement du background plus vite).
         /// </summary>
         private int _compteurAnimationPresentation = 0;
+        
         /// <summary>
         /// Compteur de l'animation du background.
         /// </summary>
@@ -88,7 +90,7 @@ namespace Tp3
         }
 
         /// <summary>
-        /// ***
+        /// Horloge crée pour gerer des mouvements du background
         /// </summary>
         private void CreerHorlogeMouvement()
         {
@@ -302,10 +304,10 @@ namespace Tp3
                 return; //Arrête le jeu.
             }
 
-            AfficherVie(); //***
-            _vuePirate.TickHorloge++; //***
-            MouvementerNavires(); //***
-            VerifierAttaques(); //***
+            AfficherVie(); //Actualiser le tableau de vie de chaque objet(navire) qui est affiche au cote du jeu.
+            _vuePirate.TickHorloge++; //Ajoute le temps au horloge du pirate pour valider le temps de recharge du canon.
+            MouvementerNavires(); //faire le choix et testes pour le deplacement des navires
+            VerifierAttaques(); //faire les test si chaque navire a suvbit des attaques et donc, perdu de la vie.
         }
 
         /// <summary>
@@ -562,7 +564,6 @@ namespace Tp3
             }
         }
 
-
         /// <summary>
         /// Verifie se l'ataque du navire qui attaque fait quelque dommage dans un navire enimie.
         /// </summary>
@@ -596,9 +597,6 @@ namespace Tp3
             ViePirate.Text = "Pirate: \n" + _vuePirate.GetBiens();
         }
 
-       
-
-
         /// <summary>
         /// Permet d'arreter l'horloge principal.
         /// </summary>
@@ -615,6 +613,11 @@ namespace Tp3
             _horloge.Start();
         }
         
+        /// <summary>
+        /// Buton pour acceder au magasin
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonMagasin_OnClick(object sender, RoutedEventArgs e)
         {
             ArreterHorlogePrincipal();

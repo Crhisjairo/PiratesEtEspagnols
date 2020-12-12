@@ -12,6 +12,11 @@ namespace Tp3
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Bouton pour commencer le jeu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonJouer_OnClick(object sender, RoutedEventArgs e)
         {
             MainWindow fenetre = new MainWindow();

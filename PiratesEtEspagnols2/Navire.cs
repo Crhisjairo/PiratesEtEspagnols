@@ -101,12 +101,12 @@ namespace PiratesEtEspagnols
         }
 
         /// <summary>
-        /// ***
+        /// Quand un navire est evahis ça doit passer quelque chose. 
         /// </summary>
         /// <param name="pirate"></param>
         public virtual void EtreEvahis(ModelePirate pirate)
         {
-            //Cette méthode a des références, elle est importante?
+            
         }
 
     }

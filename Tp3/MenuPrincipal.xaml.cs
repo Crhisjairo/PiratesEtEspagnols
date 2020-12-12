@@ -11,7 +11,11 @@ namespace Tp3
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Initialise le jeu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="routedEventArgs"></param>
         private void OnClickCommencer(object sender, RoutedEventArgs routedEventArgs)
         {
             FenetreCommentJouer fenetreCommentJouer = new FenetreCommentJouer();
@@ -20,6 +24,11 @@ namespace Tp3
             this.Hide();
         }
 
+        /// <summary>
+        /// Ferme la fenetre du jeu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="routedEventArgs"></param>
         private void OnClickQuitter(object sender, RoutedEventArgs routedEventArgs)
         {
             Close();
