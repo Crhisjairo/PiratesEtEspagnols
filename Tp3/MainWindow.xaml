@@ -49,7 +49,7 @@
 
             <StackPanel VerticalAlignment="Bottom" Margin="0,0,0,30">
                 <!--Enlèver le commentaire pour afficher le boutton pour tuer les enemis et avancer de niveau-->
-                <!-- <Button Click="ButtonTuer_OnClick">Tuer enemis</Button> -->
+                 <Button Click="ButtonTuer_OnClick">Tuer enemis</Button> 
 
                 <TextBlock Foreground="WhiteSmoke" FontSize="30" HorizontalAlignment="Center" Margin="0,0,0,20" Name="TextBlockNiveauActuel" Text="Niveau: ?"></TextBlock>
                 <Button Width="130" Height="50" FontSize="25" Click="ButtonMagasin_OnClick" Focusable="False">Magasin</Button>
